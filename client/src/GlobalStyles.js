@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import background from '../src/assets/background.png';
 
 export default createGlobalStyle`
 :root {
@@ -14,6 +15,7 @@ export default createGlobalStyle`
 }
 
 body {
+    background-image: url(${background});
   color: var(--primarygreen);
   font-family: sans-serif;
   font-size: 1.25rem;
