@@ -1,22 +1,29 @@
-import KanbanCard from '../components/KanbanCard';
+import { useState } from 'react';
 import styled from 'styled-components';
+import KanbanCard from '../components/kanbancomponents/KanbanCard';
+import KanbanForm from '../components/kanbancomponents/KanbanForm';
+import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
+
 
 export default function Kanban() {
+    const [columns, setColumns] = useState([]);
+
+    const addColumn = (column) =>
+        setColumns([...columns, column]);
+
+    console.log(columns)
+
+
     return (
         <Wrapper>
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
-            <Infotag>Kanban ist eine Methode der
-            Produktionsprozesssteuerung. Das
-            Vorgehen orientiert sich ausschließlich
-            am tatsächlichen Verbrauch von
-            Materialien am Bereitstell- und
-            Verbrauchsort. Kanban ermöglicht
-            eine Reduktion der lokalen Bestände
-            von Vorprodukten in und nahe der
-            Produktion, die dort in Produkten der
-            nächsten Integrationsstufe verbaut werden. </Infotag>
+            <KanbanInfoTag />
             <button>show me more!</button>
-            <KanbanCard />
+
+            <KanbanForm submitFunction={addColumn} />
+            {columns.map((column) => (
+                <KanbanCard column={column} />
+            ))}
 
         </Wrapper>
     );
@@ -29,15 +36,6 @@ border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
 `
-const Infotag = styled.p`
-text-align: center;
-border: solid 2px var(--primarypink);
-border-radius: 1rem;
-margin: 1rem; 
-padding: 0.8rem;
-background-color: white;
-`
-
 
 const KanbanHeader = styled.h1`
 color: white;`
