@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import KanbanCard from '../components/kanbancomponents/KanbanCard';
 import KanbanForm from '../components/kanbancomponents/KanbanForm';
 import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
+import KanbanInformation from '../components/kanbancomponents/KanbanNavigation';
 
 
 export default function Kanban() {
@@ -18,8 +19,7 @@ export default function Kanban() {
         <Wrapper>
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
             <KanbanInfoTag />
-            <button>show me more!</button>
-
+            <KanbanInformation />
             <KanbanForm submitFunction={addColumn} />
             {columns.map((column) => (
                 <KanbanCard column={column} />

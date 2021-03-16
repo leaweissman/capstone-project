@@ -15,7 +15,8 @@ export default createGlobalStyle`
 }
 
 body {
-    background-image: url(${background});
+    //background-image: url(${background});
+    background-color: var(--primaryyellow);
   color: var(--primarygreen);
   font-family: sans-serif;
   font-size: 1.25rem;

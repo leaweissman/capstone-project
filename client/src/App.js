@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Okr from './pages/okr';
 import Kanban from './pages/kanban';
 import Scrum from './pages/scrum';
+import Characters from '../src/components/kanbancomponents/KanbanDetailedInfo';
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
 
           <Route path='/kanban'>
             <Kanban />
+          </Route>
+          <Route path="/KanbanInformation">
+            <Characters />
           </Route>
 
           <Route path='scrum'>
