@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import loadFromLocal from '../lib/loadFromLocal';
 import KanbanCard from '../components/kanbancomponents/KanbanCard';
 import KanbanForm from '../components/kanbancomponents/KanbanForm';
 import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
@@ -7,12 +8,18 @@ import KanbanInformation from '../components/kanbancomponents/KanbanNavigation';
 
 
 export default function Kanban() {
-    const [columns, setColumns] = useState([]);
+    const LOCAL_STORAGE_KEY = 'kanbantasks'
+    const [columns, setColumns] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
+
 
     const addColumn = (column) =>
         setColumns([...columns, column]);
 
     console.log(columns)
+
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(columns))
+    }, [columns])
 
 
     return (

@@ -15,9 +15,9 @@ function Characters() {
         <div>
             <TopicInStyle>About Kanban</TopicInStyle>
             <nav>
-                <NavLinkStyled to={url + "/mini"}>The Kanban board</NavLinkStyled>
-                <NavLinkStyled to={url + "/micki"}>History</NavLinkStyled>
-                <NavLinkStyled to={url + "/Donald"}>what can it do for me?</NavLinkStyled>
+                <NavLinkStyled to={url + "/KanbanBoard"}>The Kanban board</NavLinkStyled>
+                <NavLinkStyled to={url + "/History"}>History</NavLinkStyled>
+                <NavLinkStyled to={url + "/ForMe"}>what can it do for me?</NavLinkStyled>
             </nav>
 
             <Switch>
