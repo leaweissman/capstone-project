@@ -50,12 +50,12 @@ const NavLinkStyled = styled(NavLink)`
   margin: 1rem;
   padding: 1rem;
 
-  &:hover {
+ /*  &:hover {
     background: rebeccapurple;}
 
     &.active{ width: 2rem;
     };
-  };
+  }; */
 `
 
 

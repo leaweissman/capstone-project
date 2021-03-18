@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import loadFromLocal from '../lib/loadFromLocal';
+import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
 import KanbanCard from '../components/kanbancomponents/KanbanCard';
 import KanbanForm from '../components/kanbancomponents/KanbanForm';
 import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
