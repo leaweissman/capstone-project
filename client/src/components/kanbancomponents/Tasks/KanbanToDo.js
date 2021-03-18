@@ -1,9 +1,19 @@
+import styled from 'styled-components';
+
 export default function TaskToDo({ title, isDone = false, onToggleTask, onDeleteTask }) {
     return (
-        <section>
+        <TaskInStyle>
             <input type='checkbox' checked={isDone} onChange={onToggleTask} />
             {title}
-            <span onClick={onDeleteTask}> &times;</span>
-        </section>
+            <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>
+        </TaskInStyle>
     )
 }
+const TaskInStyle = styled.section`
+text-align: left;
+margin: .3rem;`
+
+const DeleteInStyle = styled.span`
+color: var(--primarypink);
+
+`

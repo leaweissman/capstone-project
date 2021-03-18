@@ -45,4 +45,5 @@ padding: 0.8rem;
 `
 
 const KanbanHeader = styled.h1`
-color: white;`
+color: white;
+position:center;`

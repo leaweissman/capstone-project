@@ -8,10 +8,10 @@ export default function KanbanCard({ column }) {
     return (
         <Wrapper>
             <ColumnName>{column.column_name}</ColumnName>
-            <IssuesInStyle>
+            <section>
                 <KanbanIssues />
                 <UrgencyInStyle>{column.urgency} urgency:</UrgencyInStyle>
-            </IssuesInStyle>
+            </section>
         </Wrapper>
     )
 }
@@ -28,12 +28,6 @@ background-color: white;
 const ColumnName = styled.h3`
 color: var(--primaryblue);
 text-align: left;
-`
-
-const IssuesInStyle = styled.section`
-border: solid 2px var(--primaryblue);
-border-radius: 1rem;
-margin: .5rem;
 `
 
 const UrgencyInStyle = styled.p`
