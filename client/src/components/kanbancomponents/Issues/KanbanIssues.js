@@ -50,6 +50,8 @@ export default function KanbanIssues() {
 
 
 const SectionInStyle = styled.section`
-border: 2px solid black;
+border: 2px solid var(--primaryblue);
+border-radius: 2rem;
+padding: .5rem;
 `
 

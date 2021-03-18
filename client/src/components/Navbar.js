@@ -5,39 +5,45 @@ import styled from 'styled-components';
 export default function Navbar() {
 
     return (
-        <header>
+        <footer>
             <Stylednav>
                 <NavLinkStyled exact to="/">
-                    <h1>Home</h1>
+                    <h5>Home</h5>
                 </NavLinkStyled>
 
                 <NavLinkStyled to='/tasks'>
-                    <h1>Tasks</h1>
+                    <h5>Tasks</h5>
                 </NavLinkStyled>
 
                 <NavLinkStyled to='/okr'>
-                    <h1>OKR</h1>
+                    <h5>OKR</h5>
                 </NavLinkStyled>
 
                 <NavLinkStyled to='/kanban'>
-                    <h1>Kanban</h1>
+                    <h5>Kanban</h5>
                 </NavLinkStyled>
 
                 <NavLinkStyled to='/scrum'>
-                    <h1>Scrum</h1>
+                    <h5>Scrum</h5>
                 </NavLinkStyled>
             </Stylednav>
-        </header>
+        </footer>
     );
 
 }
 
 const NavLinkStyled = styled(NavLink)`
 display: flex;
+flex-wrap: wrap;
 flex-direction: row;
 text-decoration: none;
-padding: 0.5rem;
+padding: .25rem;
 color: white;
+border: .5px solid white;
+border-radius: 4rem;
+margin: .5rem;
+/* height: 2rem;
+ */
 
 &:hover{
     color: var(--primaryblue);
@@ -52,5 +58,10 @@ const Stylednav = styled.nav`
 display:flex;
 flex-wrap:wrap;
 justify-content: center;
-background-color: var(--primaryorange)
+background-color: var(--primaryorange);
+border-radius: 4rem;
+position: fixed; 
+bottom: 0;
+left: 0;
+right: 0;
 `

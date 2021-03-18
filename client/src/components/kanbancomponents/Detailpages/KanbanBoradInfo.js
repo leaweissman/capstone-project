@@ -20,7 +20,6 @@ border: 2px solid var(--primarypink);
 margin: 2rem;
 `
 const InfoHeaderInStyle = styled.h3`
-text-align:center;
 margin: 1rem;
 `
 const InfoTextInStyle = styled.p`

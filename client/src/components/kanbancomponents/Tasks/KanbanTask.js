@@ -43,16 +43,16 @@ export default function KanbanTask() {
         setTaskToDo([]);
     }
 
-    function openTasksToDo() {
-        const uncheckedTasks = openTasksToDo.filter(
-            (task) => task.isDone === false)
-        setOpenTasks(uncheckedTasks)
-    }
+    /*  function openTasksToDo() {
+         const uncheckedTasks = openTasksToDo.filter(
+             (task) => task.isDone === false)
+         setOpenTasks(uncheckedTasks)
+     } */
     const tasksToShow = openTasks.length > 0 ? openTasks : taskToDo
 
     return (
         <SectionInStyle>
-            <KanbanTasksForm onCreateTaskToDo={addTaskToDo} />
+            <HeadingInStyle>My Tasks: </HeadingInStyle>
             {tasksToShow.map(({ title, isDone, id }) =>
                 <TaskToDo
                     key={id}
@@ -61,15 +61,20 @@ export default function KanbanTask() {
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTaskToDo(id)} />
             )}
+            <KanbanTasksForm onCreateTaskToDo={addTaskToDo} />
+
             <button onClick={deleteAll}>delete all tasks
             </button>
-            <button filterItems={openTasksToDo}>show my open tasks</button>
+
         </SectionInStyle>
     )
 }
 
 
 const SectionInStyle = styled.section`
-border: 2px solid black;
+border: 2px solid white;
 `
-
+const HeadingInStyle = styled.p`
+margin: .5;
+text-align:left;
+`

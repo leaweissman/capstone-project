@@ -13,7 +13,6 @@ function App() {
   return (
     <>
       <main>
-        <Navbar />
 
         <Switch>
           <Route exact path='/'>
@@ -41,6 +40,9 @@ function App() {
 
         </Switch>
       </main>
+      <footer>
+        <Navbar />
+      </footer>
     </>
   );
 }

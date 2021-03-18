@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import background from '../src/assets/background.png';
+import backgroundcolorfull from '../src/assets/backgroundcolorfull.jpg';
 
 export default createGlobalStyle`
 :root {
@@ -15,8 +15,11 @@ export default createGlobalStyle`
 }
 
 body {
-    //background-image: url(${background});
-    background-color: var(--primaryyellow);
+  background-image: url(${backgroundcolorfull});
+  background-size: cover;
+    background-attachment: fixed;
+  width: 100%;
+  /*   background-color: var(--primaryyellow); */
   color: var(--primarygreen);
   font-family: sans-serif;
   font-size: 1.25rem;
