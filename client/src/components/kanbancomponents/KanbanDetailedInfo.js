@@ -3,10 +3,12 @@ import {
     Switch,
     Route,
     NavLink,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import styled from "styled-components";
+import History from '../kanbancomponents/Detailpages/History';
+import BoardInfo from '../kanbancomponents/Detailpages/KanbanBoradInfo';
+import ForMe from '../kanbancomponents/Detailpages/ForMe';
 
 function Characters() {
     let { url, path } = useRouteMatch();
@@ -24,21 +26,20 @@ function Characters() {
                 <Route exact path={path}>
                     <TopicInStyle>Please select a topic about Kanban of which you would like further Info</TopicInStyle>
                 </Route>
-                <Route path={path + "/:characterName"}>
-                    <Character />
+                <Route path={path + "/History"}>
+                    <History />
+                </Route>
+                <Route path={path + "/KanbanBoard"}>
+                    <BoardInfo />
+                </Route>
+                <Route path={path + "/ForMe"}>
+                    <ForMe />
                 </Route>
             </Switch>
         </div>
     );
 
-    function Character() {
-        const { characterName } = useParams();
-        return (
-            <div>
-                <TopicInStyle>{characterName}</TopicInStyle>
-            </div>
-        );
-    }
+
 }
 
 export default Characters;
