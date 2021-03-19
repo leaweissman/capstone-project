@@ -1,15 +1,24 @@
+import { useEffect, useState } from 'react';
 import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
 
 import IssueToDo from '../Issues/KanbanSingleIssue';
 import KanbanIssueForm from '../Issues/KanbabIssuesForm';
+import loadFromLocal from '../lib/loadFromLocal';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColumn, column }) {
+export default function KanbanIssues() {
+    const LOCAL_STORAGE_KEY = 'issueToBeDone'
+    const [issueToDo, setIssueToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
+    const [openIssue, setOpenIssue] = useState([]);
+
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(issueToDo))
+    }, [issueToDo])
+
 
     function addIssueToDo(title) {
         const newIssueToDo = { title: title, isDone: false, id: uuid4() };
-        onAddIssueToColumn(column.column_name, newIssueToDo)
         setIssueToDo([...issueToDo, newIssueToDo])
     }
 
@@ -19,9 +28,11 @@ export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColu
         setIssueToDo(allRemainingIssue)
     }
 
+    const issuesToShow = openIssue.length > 0 ? openIssue : issueToDo
+
     return (
         <SectionInStyle>
-            {column && column?.issues?.map(({ title, id }) =>
+            {issuesToShow.map(({ title, id }) =>
                 <span>
                     <IssueToDo
                         key={id}

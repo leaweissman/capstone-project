@@ -1,16 +1,15 @@
 import styled from 'styled-components';
+import KanbanIssues from '../kanbancomponents/Issues/KanbanIssues';
 
 
-export default function ScrumCard({ column, onDeleteMyColumn }) {
+export default function KanbanCard({ column }) {
 
 
     return (
         <Wrapper>
             <ColumnName>{column.column_name}</ColumnName>
-            <button onClick={() => onDeleteMyColumn(column.id)}
-            >Delete my Column</button>
             <section>
-                <ScrumIssues />
+                <KanbanIssues />
                 <UrgencyInStyle>{column.urgency} urgency:</UrgencyInStyle>
             </section>
         </Wrapper>
