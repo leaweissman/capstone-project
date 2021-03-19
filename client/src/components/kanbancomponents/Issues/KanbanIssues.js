@@ -5,13 +5,15 @@ import IssueToDo from '../Issues/KanbanSingleIssue';
 import KanbanIssueForm from '../Issues/KanbabIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColumn, column }) {
+export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColumn, column, setTaskToDo, taskToDo, onAddTaskToDo }) {
 
     function addIssueToDo(title) {
         const newIssueToDo = { title: title, isDone: false, id: uuid4() };
         onAddIssueToColumn(column.column_name, newIssueToDo)
         setIssueToDo([...issueToDo, newIssueToDo])
     }
+
+    console.log(issueToDo)
 
     function deleteIssueToDo(idToDelete) {
         const allRemainingIssue = issueToDo.filter(
@@ -27,7 +29,11 @@ export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColu
                         key={id}
                         title={title}
                         onDeleteIssue={() => deleteIssueToDo(id)} />
-                    <KanbanTask />
+                    <KanbanTask
+                        issueToDo={issueToDo}
+                        taskToDo={taskToDo}
+                        setTaskToDo={setTaskToDo}
+                        onAddTaskToDo={onAddTaskToDo} />
                 </span>
             )}
             <KanbanIssueForm onCreateIssueToDo={addIssueToDo} />

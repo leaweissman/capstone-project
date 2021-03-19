@@ -13,8 +13,6 @@ export default function Kanban() {
     const [columns, setColumns] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_COLUMN) ?? []);
     const [issueToDo, setIssueToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_ISSUE) ?? []);
 
-
-
     const addColumn = (column) =>
         setColumns([...columns, column]);
 
@@ -39,7 +37,6 @@ export default function Kanban() {
 
 
     function addIssueToColumn(columnName, issue) {
-        console.log(columnName)
         const columnToUpdate = columns.find(column => column.column_name === columnName)
         columnToUpdate.issues.push(issue)
         setColumns([...columns, columnToUpdate])

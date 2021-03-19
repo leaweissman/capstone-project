@@ -1,26 +1,10 @@
-import { useEffect, useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
 import TaskToDo from '../Tasks/KanbanToDo';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
-import loadFromLocal from '../lib/loadFromLocal';
+import IssueToDo from '../Issues/KanbanSingleIssue';
 
-export default function KanbanTask() {
-    const LOCAL_STORAGE_KEY = 'tasksToBeDone'
-    const [taskToDo, setTaskToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
-    const [openTasks, setOpenTasks] = useState([]);
+export default function KanbanTask({ taskToDo, setTaskToDo, addTaskToDo }) {
 
-
-
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(taskToDo))
-    }, [taskToDo])
-
-
-    function addTaskToDo(title) {
-        const newTaskToDo = { title: title, isDone: false, id: uuid4() };
-        setTaskToDo([...taskToDo, newTaskToDo])
-    }
 
 
     function toggleCheckbox(idToToggle) {
@@ -43,17 +27,11 @@ export default function KanbanTask() {
         setTaskToDo([]);
     }
 
-    /*  function openTasksToDo() {
-         const uncheckedTasks = openTasksToDo.filter(
-             (task) => task.isDone === false)
-         setOpenTasks(uncheckedTasks)
-     } */
-    const tasksToShow = openTasks.length > 0 ? openTasks : taskToDo
 
     return (
         <SectionInStyle>
             <HeadingInStyle>My Tasks: </HeadingInStyle>
-            {tasksToShow.map(({ title, isDone, id }) =>
+            {IssueToDo && IssueToDo?.taskToDo?.map(({ title, isDone, id }) =>
                 <TaskToDo
                     key={id}
                     title={title}

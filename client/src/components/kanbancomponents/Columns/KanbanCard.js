@@ -1,9 +1,29 @@
+import { useState, useEffect } from 'react';
+import { v4 as uuid4 } from 'uuid';
+import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
 export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIssueToDo, onAddIssueToColumn }) {
+    const LOCAL_STORAGE_KEY = 'tasksToBeDone'
+    const [taskToDo, setTaskToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
 
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(taskToDo))
+    }, [taskToDo])
+
+    function addTaskToDo(title) {
+        const newTaskToDo = { title: title, isDone: false, id: uuid4() };
+        setTaskToDo([...taskToDo, newTaskToDo])
+    }
+
+    function addTaskToIssue(issueName, task) {
+        console.log(issueName)
+        const taskToUpdate = issueToDo.find(issue => issue.task_name === issueName)
+        taskToUpdate.tasks.push(taskToDo)
+        setIssueToDo([...issueToDo, taskToUpdate])
+    }
 
     return (
         <Wrapper>
@@ -15,8 +35,9 @@ export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIss
                     column={column}
                     issueToDo={issueToDo}
                     setIssueToDo={setIssueToDo}
-                    onAddIssueToColumn={onAddIssueToColumn} />
-                <UrgencyInStyle>{column.urgency} urgency:</UrgencyInStyle>
+                    onAddIssueToColumn={onAddIssueToColumn}
+                    addTaskToDo={addTaskToDo}
+                    addTaskToIssue={addTaskToIssue} />
             </section>
         </Wrapper>
     )
@@ -36,7 +57,4 @@ color: var(--primaryblue);
 text-align: left;
 `
 
-const UrgencyInStyle = styled.p`
-text-align: left;
-`
 
