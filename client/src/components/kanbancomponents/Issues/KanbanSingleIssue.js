@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function IssueToDo({ title, isDone = false, onToggleIssue, onDeleteIssue }) {
+export default function IssueToDo({ title, onDeleteIssue }) {
     return (
         <section>
             <IssueInStyle>

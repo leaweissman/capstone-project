@@ -20,7 +20,7 @@ display: flex;
 flex-direction: row;
 text-decoration: none;
 padding: 0.5rem;
-color: white;
+color: var(--primarypink);
 
 &:hover{
     color: var(--primaryblue);
@@ -32,10 +32,11 @@ color: white;
 }
 `
 const Stylednav = styled.nav`
+color: var(--primarypink);
 display:flex;
 flex-wrap:wrap;
 justify-content: center;
 border-radius: 5rem;
 margin: 1rem;
-background-color: var(--primaryorange)
+background-color: white;
 `
