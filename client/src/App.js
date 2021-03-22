@@ -5,7 +5,8 @@ import Navbar from './components/Navbar';
 import Okr from './pages/okr';
 import Kanban from './pages/kanban';
 import Scrum from './pages/scrum';
-import Characters from '../src/components/kanbancomponents/KanbanDetailedInfo';
+import KanbanRouting from './components/kanbancomponents/Detailpages/KanbanRouting';
+import OkrRouting from './components/okrcomponents/Detailspages/OkrRouting';
 
 
 function App() {
@@ -26,12 +27,15 @@ function App() {
           <Route path='/okr'>
             <Okr />
           </Route>
+          <Route path='/OkrInformation'>
+            <OkrRouting />
+          </Route>
 
           <Route path='/kanban'>
             <Kanban />
           </Route>
           <Route path="/KanbanInformation">
-            <Characters />
+            <KanbanRouting />
           </Route>
 
           <Route path='scrum'>

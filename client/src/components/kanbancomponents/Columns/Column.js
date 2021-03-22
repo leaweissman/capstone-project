@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
-export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIssueToDo, onAddIssueToColumn }) {
+export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, issue }) {
     const LOCAL_STORAGE_KEY = 'tasksToBeDone'
     const [taskToDo, setTaskToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
 
@@ -19,10 +19,13 @@ export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIss
     }
 
     function addTaskToIssue(issueName, task) {
-        console.log(issueName)
-        const taskToUpdate = issueToDo.find(issue => issue.task_name === issueName)
-        taskToUpdate.tasks.push(taskToDo)
-        setIssueToDo([...issueToDo, taskToUpdate])
+        const updatedIssues = issue.map(issue => {
+            if (issue.issue_name === issueName) {
+                issue.tasks.push(task)
+            }
+            return issue;
+        })
+        setIssues(updatedIssues)
     }
 
     return (
@@ -33,8 +36,8 @@ export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIss
             <section>
                 <KanbanIssues
                     column={column}
-                    issueToDo={issueToDo}
-                    setIssueToDo={setIssueToDo}
+                    issues={issues}
+                    setIssues={setIssues}
                     onAddIssueToColumn={onAddIssueToColumn}
                     addTaskToDo={addTaskToDo}
                     addTaskToIssue={addTaskToIssue} />

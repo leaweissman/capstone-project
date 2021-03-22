@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 import TaskToDo from '../Tasks/KanbanToDo';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
-import IssueToDo from '../Issues/KanbanSingleIssue';
 
-export default function KanbanTask({ taskToDo, setTaskToDo, addTaskToDo }) {
-
-
+export default function KanbanTask({ taskToDo, setTaskToDo, addTaskToDo, issueToDo }) {
 
     function toggleCheckbox(idToToggle) {
         const newTask = taskToDo.map((task) => {
@@ -31,7 +28,7 @@ export default function KanbanTask({ taskToDo, setTaskToDo, addTaskToDo }) {
     return (
         <SectionInStyle>
             <HeadingInStyle>My Tasks: </HeadingInStyle>
-            {IssueToDo && IssueToDo?.taskToDo?.map(({ title, isDone, id }) =>
+            {issueToDo && issueToDo?.taskToDo?.map(({ title, isDone, id }) =>
                 <TaskToDo
                     key={id}
                     title={title}

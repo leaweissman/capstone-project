@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
-import KanbanCard from '../components/kanbancomponents/Columns/KanbanCard';
-import KanbanForm from '../components/kanbancomponents/Columns/KanbanForm';
-import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
-import KanbanInformation from '../components/kanbancomponents/KanbanNavigation';
+import Column from '../components/kanbancomponents/Columns/Column';
+import KanbanInfoTag from '../components/kanbancomponents/Detailpages/KanbanInfo';
+import KanbanInformation from '../components/kanbancomponents/Detailpages/KanbanNavigation';
+import ColumnForm from '../components/kanbancomponents/Columns/ColumnForm';
 
 
 export default function Kanban() {
     const LOCAL_STORAGE_KEY_KANBAN_COLUMN = 'kanbancolumn'
     const LOCAL_STORAGE_KEY_KANBAN_ISSUE = 'issueToBeDone'
     const [columns, setColumns] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_COLUMN) ?? []);
-    const [issueToDo, setIssueToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_ISSUE) ?? []);
+    const [issues, setIssues] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_ISSUE) ?? []);
 
     const addColumn = (column) =>
         setColumns([...columns, column]);
@@ -22,8 +22,8 @@ export default function Kanban() {
 
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_ISSUE, JSON.stringify(issueToDo))
-    }, [issueToDo])
+        localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_ISSUE, JSON.stringify(issues))
+    }, [issues])
 
     function deleteColumns() {
         setColumns([]);
@@ -37,10 +37,13 @@ export default function Kanban() {
 
 
     function addIssueToColumn(columnName, issue) {
-        const columnToUpdate = columns.find(column => column.column_name === columnName)
-        columnToUpdate.issues.push(issue)
-        setColumns([...columns, columnToUpdate])
-
+        const updatedColumns = columns.map(column => {
+            if (column.column_name === columnName) {
+                column.issues.push(issue);
+            }
+            return column;
+        });
+        setColumns(updatedColumns)
     }
 
     return (
@@ -49,12 +52,12 @@ export default function Kanban() {
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
             <KanbanInfoTag />
             <KanbanInformation />
-            <KanbanForm submitFunction={addColumn} />
+            <ColumnForm submitFunction={addColumn} />
             {columns.map((column) => (
-                <KanbanCard
+                <Column
                     column={column}
-                    issueToDo={issueToDo}
-                    setIssueToDo={setIssueToDo}
+                    issues={issues}
+                    setIssues={setIssues}
                     onDeleteMyColumn={deleteMyColumn}
                     onAddIssueToColumn={addIssueToColumn} />
             ))}

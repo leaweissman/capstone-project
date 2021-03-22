@@ -1,44 +1,40 @@
 import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
 
-import IssueToDo from '../Issues/KanbanSingleIssue';
-import KanbanIssueForm from '../Issues/KanbabIssuesForm';
+import IssueHeadline from './IssueHeadline';
+import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColumn, column, setTaskToDo, taskToDo, onAddTaskToDo }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTaskToDo, taskToDo, onAddTaskToDo }) {
 
-    function addIssueToDo(title) {
-        const newIssueToDo = { title: title, isDone: false, id: uuid4() };
-        onAddIssueToColumn(column.column_name, newIssueToDo)
-        setIssueToDo([...issueToDo, newIssueToDo])
+    function addIssue(issue) {
+        const newIssue = { ...issue, id: uuid4() };
+        onAddIssueToColumn(column.column_name, newIssue)
+        setIssues([...issues, newIssue])
     }
 
-    console.log(issueToDo)
-
     function deleteIssueToDo(idToDelete) {
-        const allRemainingIssue = issueToDo.filter(
+        const allRemainingIssue = issues.filter(
             (issue, id) => issue.id !== idToDelete)
-        setIssueToDo(allRemainingIssue)
+        setIssues(allRemainingIssue)
     }
 
     return (
         <SectionInStyle>
             {column && column?.issues?.map(({ title, id }) =>
                 <span>
-                    <IssueToDo
+                    <IssueHeadline
                         key={id}
                         title={title}
                         onDeleteIssue={() => deleteIssueToDo(id)} />
                     <KanbanTask
-                        issueToDo={issueToDo}
+                        issues={issues}
                         taskToDo={taskToDo}
                         setTaskToDo={setTaskToDo}
                         onAddTaskToDo={onAddTaskToDo} />
                 </span>
             )}
-            <KanbanIssueForm onCreateIssueToDo={addIssueToDo} />
-
-
+            <KanbanIssueForm submitIssueFunction={addIssue} />
         </SectionInStyle>
     )
 }

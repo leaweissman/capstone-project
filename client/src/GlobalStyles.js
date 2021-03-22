@@ -24,7 +24,7 @@ body {
   font-family: sans-serif;
   font-size: 1.25rem;
   margin: 0;
-  padding: 0%;
+  padding: 0 0 4rem 0;
 }
 
 select,

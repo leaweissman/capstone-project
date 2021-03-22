@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 
 export default function KanbanTasksForm({ submitTaskFunction }) {
     const initialTask = {
-        task_name: ''
+        title: ''
     }
 
     const [task, setTask] = useState(initialTask)
@@ -14,8 +13,7 @@ export default function KanbanTasksForm({ submitTaskFunction }) {
         const value = field.value;
         setTask({
             ...task,
-            [field.name]: value,
-            id: uuid4(),
+            [field.name]: value
         });
     }
 
@@ -33,7 +31,7 @@ export default function KanbanTasksForm({ submitTaskFunction }) {
                 type='text'
                 placeholder='Anything else to do?'
                 onChange={handleChange}
-                value={task.task_name} />
+                value={task.title} />
             <button onSubmit={handleSubmit} >Add task</button>
         </form>
     )
