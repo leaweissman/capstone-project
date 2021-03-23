@@ -5,23 +5,22 @@ import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
-export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
-    const LOCAL_STORAGE_KEY = 'tasksToBeDone'
-    const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
+export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, issue }) {
+    const LOCAL_STORAGE_KEY_SCRUM_TASKS = 'scrumtasks'
+    const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY_SCRUM_TASKS) ?? []);
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks))
+        localStorage.setItem(LOCAL_STORAGE_KEY_SCRUM_TASKS, JSON.stringify(tasks))
     }, [tasks])
 
-    function addTask(issueId, task) {
-        const newTask = { title: task.title, isDone: false, id: uuid4() };
+    function addTask(title) {
+        const newTask = { title: title, isDone: false, id: uuid4() };
         setTasks([...tasks, newTask])
-        addTaskToIssue(issueId, newTask)
     }
 
-    function addTaskToIssue(issueId, task) {
-        const updatedIssues = issues.map(issue => {
-            if (issue.id === issueId) {
+    function addTaskToIssue(issueName, task) {
+        const updatedIssues = issue.map(issue => {
+            if (issue.title === issueName) {
                 issue.tasks.push(task)
             }
             return issue;
@@ -60,3 +59,5 @@ const ColumnName = styled.h3`
 color: var(--primaryblue);
 text-align: left;
 `
+
+

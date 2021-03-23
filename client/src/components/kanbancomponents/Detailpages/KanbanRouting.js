@@ -10,7 +10,7 @@ import BoardInfo from './KanbanBoradInfo';
 import ForMe from './ForMe';
 import DetailsNavigation from './Detailsnavigation';
 
-function KanbanRouting() {
+export default function KanbanRouting() {
     let { path } = useRouteMatch();
 
     return (
@@ -38,7 +38,6 @@ function KanbanRouting() {
 
 }
 
-export default KanbanRouting;
 
 
 

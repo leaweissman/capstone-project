@@ -7,6 +7,7 @@ import Kanban from './pages/kanban';
 import Scrum from './pages/scrum';
 import KanbanRouting from './components/kanbancomponents/Detailpages/KanbanRouting';
 import OkrRouting from './components/okrcomponents/Detailspages/OkrRouting';
+import ScrumRouting from './components/scrumcomponents/AboutScrum/ScrumRouting';
 
 
 function App() {
@@ -38,8 +39,11 @@ function App() {
             <KanbanRouting />
           </Route>
 
-          <Route path='scrum'>
+          <Route path='/scrum'>
             <Scrum />
+          </Route>
+          <Route path='/ScrumInformation'>
+            <ScrumRouting />
           </Route>
 
         </Switch>

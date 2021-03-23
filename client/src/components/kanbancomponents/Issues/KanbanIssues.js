@@ -5,7 +5,7 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTaskToDo, taskToDo, onAddTaskToDo }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTasks, addTask }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -19,19 +19,35 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
         setIssues(allRemainingIssue)
     }
 
+    /* function updateTaskForIssue(taskToUpdate, issueId) {
+        const updatedIssues = issues.map(issue => {
+            if (issue.id === issueId) {
+                issue.tasks = issue.tasks.map(task => {
+                    if (task.id === taskToUpdate.id) {
+                        task.isDone = taskToUpdate.isDone
+                    }
+                    return task;
+                });
+
+                return issue;
+            }
+        })
+        setIssues(updatedIssues)
+    } */
+
     return (
         <SectionInStyle>
-            {column && column?.issues?.map(({ title, id }) =>
+            {column && column?.issues?.map((issue) =>
                 <span>
                     <IssueHeadline
-                        key={id}
-                        title={title}
-                        onDeleteIssue={() => deleteIssueToDo(id)} />
+                        key={issue.id}
+                        title={issue.title}
+                        onDeleteIssue={() => deleteIssueToDo(issue.id)} />
                     <KanbanTask
-                        issues={issues}
-                        taskToDo={taskToDo}
-                        setTaskToDo={setTaskToDo}
-                        onAddTaskToDo={onAddTaskToDo} />
+                        issue={issue}
+                        setTasks={setTasks}
+                        addTask={addTask}
+                        /* updateTaskForIssue={updateTaskForIssue} */ />
                 </span>
             )}
             <KanbanIssueForm submitIssueFunction={addIssue} />

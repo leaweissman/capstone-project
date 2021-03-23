@@ -48,7 +48,6 @@ export default function Kanban() {
 
     return (
         <Wrapper>
-            <button onClick={deleteColumns}>Delete All Column</button>
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
             <KanbanInfoTag />
             <KanbanInformation />
@@ -62,6 +61,7 @@ export default function Kanban() {
                     onAddIssueToColumn={addIssueToColumn} />
             ))}
 
+            <button onClick={deleteColumns}>Delete All Columns</button>
         </Wrapper>
     );
 

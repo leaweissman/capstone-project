@@ -5,20 +5,48 @@ import OkrNavigation from '../components/okrcomponents/Detailspages/OkrNavigatio
 import OkrBigPicture from '../components/okrcomponents/OkrBigPicture';
 import OkrMissionCard from '../components/okrcomponents/Mission/OkrMissionCard';
 import OkrMissionForm from '../components/okrcomponents/Mission/OkrMissionForm';
+import OkrObjectives from '../components/okrcomponents/Objectives/OkrObjectives';
+import OkrObjectiveForm from '../components/okrcomponents/Objectives/OkrObjectivesForm';
+import KeyResultForm from '../components/okrcomponents/KeyResults/KeyResultsForm';
+import KeyResult from '../components/okrcomponents/KeyResults/KeyResult';
 
 export default function Okr() {
     const LOCAL_STORAGE_KEY_MISSION = 'okrmission'
+    const LOCAL_STORAGE_KEY_OBJECTIVE = 'okrObjective'
+    const LOCAL_STORAGE_KEY_KEYRESULT = 'okrKeyResult'
     const [missions, setMissions] = useState(loadFromLocal[LOCAL_STORAGE_KEY_MISSION] ?? []);
+    const [objectives, setObjectives] = useState(loadFromLocal[LOCAL_STORAGE_KEY_OBJECTIVE] ?? []);
+    const [keyResults, setKeyResults] = useState(loadFromLocal[LOCAL_STORAGE_KEY_KEYRESULT] ?? []);
 
     const addMission = (mission) =>
         setMissions([...missions, mission]);
+
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY_MISSION, JSON.stringify(missions))
+    })
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY_OBJECTIVE, JSON.stringify(objectives))
     })
 
     function deleteMission() {
         setMissions([]);
     }
+
+    const addObjective = (objective) =>
+        setObjectives([...objectives, objective]);
+
+
+    function deleteObjectives() {
+        setObjectives([]);
+    }
+
+    const addKeyResult = (keyResult) =>
+        setKeyResults([...keyResults, keyResult]);
+
+    function deleteKeyResults() {
+        setKeyResults([]);
+    }
+
     return (
         <OkrInStyle>
             <p>Welcome to OKR</p>
@@ -27,10 +55,25 @@ export default function Okr() {
             <OkrBigPicture />
             <OkrMissionForm submitFunction={addMission} />
             {missions.map((mission) => (
-                <OkrMissionCard mission={mission} />
+                <OkrMissionCard
+                    mission={mission}
+                />
             ))}
             <button onClick={deleteMission}>Delete the Mission</button>
 
+            <OkrObjectiveForm submitFunction={addObjective} />
+            {objectives.map((objective) => (
+                <OkrObjectives
+                    objective={objective} />
+            ))}
+            <button onClick={deleteObjectives}>Delete all Objectives</button>
+
+            <KeyResultForm submitFunction={addKeyResult} />
+            {keyResults.map((keyResult) => (
+                <KeyResult
+                    keyResult={keyResult} />
+            ))}
+            <button onClick={deleteKeyResults}>Delete all Key Results</button>
         </OkrInStyle>
     );
 }

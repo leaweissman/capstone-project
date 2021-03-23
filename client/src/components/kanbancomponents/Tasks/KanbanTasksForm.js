@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-export default function KanbanTasksForm({ submitTaskFunction }) {
+export default function KanbanTasksForm({ issue, submitTask }) {
     const initialTask = {
         title: ''
     }
 
     const [task, setTask] = useState(initialTask)
+    console.log(task)
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -19,12 +20,12 @@ export default function KanbanTasksForm({ submitTaskFunction }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        submitTaskFunction(task)
+        submitTask(issue.id, task)
         setTask(initialTask)
 
     }
     return (
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <h3>add further tasks</h3>
             <input
                 name='title'
@@ -32,7 +33,7 @@ export default function KanbanTasksForm({ submitTaskFunction }) {
                 placeholder='Anything else to do?'
                 onChange={handleChange}
                 value={task.title} />
-            <button onSubmit={handleSubmit} >Add task</button>
+            <button >Add task</button>
         </form>
     )
 }

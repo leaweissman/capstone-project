@@ -31,27 +31,10 @@ export default function OkrMissionForm({ submitFunction }) {
             <input
                 type='text'
                 name='mission_name'
-                placeholder='Was ist das Leitbild?'
+                placeholder='E.g. North Star'
                 onChange={handleChange}
                 value={mission.mission_name} />
             <button>Add my long term goals</button>
-
-            {/* <input
-                    type='text'
-                    name='moal_name'
-                    placeholder='Moals'
-                />
-                <button>Add Moals</button>
-                <input
-                    type='text'
-                    name='plannings'
-                    placeholder='plannings' />
-                <button>Add the Plannings</button>
-                <input
-                    type='text'
-                    name='weekly'
-                    placeholder='Weekly' />
-                <button>Weekly</button> */}
         </form>
     )
 }

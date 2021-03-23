@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-export default function OkrMissionCard({ mission }) {
+export default function KeyResult({ keyResult }) {
     return (
         <Wrapper>
-            <h6>Mission statement:</h6>
-            <p>{mission.mission_name}</p>
+            <p>{keyResult.title}</p>
         </Wrapper>
     )
 }
