@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
-export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
+export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, updateColumns }) {
     const LOCAL_STORAGE_KEY = 'tasksToBeDone'
     const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
 
@@ -38,8 +38,10 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
                 <KanbanIssues
                     column={column}
                     issues={issues}
+                    setTasks={setTasks}
                     setIssues={setIssues}
                     onAddIssueToColumn={onAddIssueToColumn}
+                    updateColumns={updateColumns}
                     addTask={addTask}
                     addTaskToIssue={addTaskToIssue} />
             </section>

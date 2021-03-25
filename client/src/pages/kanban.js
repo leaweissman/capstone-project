@@ -25,6 +25,7 @@ export default function Kanban() {
         localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_ISSUE, JSON.stringify(issues))
     }, [issues])
 
+
     function deleteColumns() {
         setColumns([]);
     }
@@ -46,19 +47,33 @@ export default function Kanban() {
         setColumns(updatedColumns)
     }
 
+    function updateColumns(columnName, updatedIssues) {
+        const updatedColumns = columns.map(column => {
+            if (column.column_name === columnName) {
+                column.issues = updatedIssues;
+            }
+            return column;
+        });
+        setColumns(updatedColumns)
+    }
+
     return (
         <Wrapper>
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
             <KanbanInfoTag />
             <KanbanInformation />
             <ColumnForm submitFunction={addColumn} />
-            {columns.map((column) => (
+            {columns && columns.map((column) => (
                 <Column
                     column={column}
                     issues={issues}
                     setIssues={setIssues}
                     onDeleteMyColumn={deleteMyColumn}
-                    onAddIssueToColumn={addIssueToColumn} />
+                    onAddIssueToColumn={addIssueToColumn}
+                    key={column?.id}
+                    updateColumns={updateColumns} />
+
+
             ))}
 
             <button onClick={deleteColumns}>Delete All Columns</button>

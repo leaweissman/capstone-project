@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
-export default function KanbanTask({ setTasks, addTask, issue }) {
+export default function KanbanTask({ setTasks, addTask, issue, task, updateTaskForIssue, issues, updateIssues }) {
 
 
     function toggleCheckbox(idToToggle) {
@@ -10,36 +10,21 @@ export default function KanbanTask({ setTasks, addTask, issue }) {
             if (task.id === idToToggle) {
                 task.isDone = !task.isDone;
             }
-            return task;
+            return task
         })
-        // setTasks(newTask);
-        // updateTaskForIssue(task, issueId)
-
-        // oben:
-        /**
-         * 
-         * function updateTaskForIssue(taskToUpdate, issueId) {
-         * const updatedIssues = issues.map(issue => {
-         *  if (issue.id === issueId) {
-         *      issue.tasks = issue.tasks.map(task => {
-         *         if (task.id === taskToUpdate.id) {
-         *          task.isDone = taskToUpdate.isDone
-         *         } 
-         *          return task;
-         *      });
-         * 
-         *      return issue;
-         *  }
-         * })
-         * setIssues(updatedIssues)
-         */
+        setTasks(newTask)
+        updateTaskForIssue(newTask, issue.id)
     }
 
     function deleteTask(idToDelete) {
         const allRemainingTasks = issue.tasks.filter(
-            (task, id) => task.id !== idToDelete)
+            (task) => task.id !== idToDelete)
+        issues.task = allRemainingTasks
         setTasks(allRemainingTasks)
+        updateIssues(issue.id, allRemainingTasks)
     }
+
+
 
     function deleteAll() {
         setTasks([]);
@@ -54,6 +39,7 @@ export default function KanbanTask({ setTasks, addTask, issue }) {
                     key={id}
                     title={title}
                     isDone={isDone}
+                    task={task}
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}

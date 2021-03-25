@@ -7,7 +7,9 @@ import styled from "styled-components";
 import OkrDetailsNavigation from '../Detailspages/OkrDetailsNavi';
 import OkrHistory from '../Detailspages/OkrHistory';
 import OkrForMe from '../Detailspages/OkrForMe';
-
+import OkrInfo from '../Detailspages/OkrInfo';
+import KeyResultsInfo from '../Detailspages/KeyResultsInfo';
+import ObjectivesInfo from "./ObjectivesInfo";
 function OkrRouting() {
     let { path } = useRouteMatch();
 
@@ -25,6 +27,15 @@ function OkrRouting() {
                 </Route>
                 <Route path={path + "/OkrForMe"}>
                     <OkrForMe />
+                </Route>
+                <Route path={path + "/OkrBoard"}>
+                    <OkrInfo />
+                </Route>
+                <Route path={path + "/Objectives"}>
+                    <ObjectivesInfo />
+                </Route>
+                <Route path={path + "/KeyResults"}>
+                    <KeyResultsInfo />
                 </Route>
             </Switch>
         </div>

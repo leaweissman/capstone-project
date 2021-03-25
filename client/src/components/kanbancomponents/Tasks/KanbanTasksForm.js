@@ -6,7 +6,7 @@ export default function KanbanTasksForm({ issue, submitTask }) {
     }
 
     const [task, setTask] = useState(initialTask)
-    console.log(task)
+
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -32,7 +32,8 @@ export default function KanbanTasksForm({ issue, submitTask }) {
                 type='text'
                 placeholder='Anything else to do?'
                 onChange={handleChange}
-                value={task.title} />
+                value={task.title}
+                task={task} />
             <button >Add task</button>
         </form>
     )

@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-export default function OkrInfoTag() {
+export default function OkrInfo() {
     return (
-        <Infotag>Okr is Loremn ipsum</Infotag>
+        <Infotag>Das Okr Board setzt sich aus verschiedenen Komponeten Zusammen.
+            <p>Grundsätzlich zeigt es zunächst die Vision, wie etwa den "North Star"
+            um diese Vision erreichen zu können werden mehrere Objectives definiert. Zu den Objectives werden im Anschluss die messbaren Key Results definiert.
+            </p>
+        </Infotag>
     )
 }
 

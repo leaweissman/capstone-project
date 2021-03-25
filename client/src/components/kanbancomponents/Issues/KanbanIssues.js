@@ -5,7 +5,7 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTasks, addTask }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTasks, addTask, task, updateColumns }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -13,41 +13,57 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
         setIssues([...issues, newIssue])
     }
 
-    function deleteIssueToDo(idToDelete) {
+    function deleteIssue(idToDelete) {
         const allRemainingIssue = issues.filter(
-            (issue, id) => issue.id !== idToDelete)
+            (issue) => issue.id !== idToDelete)
         setIssues(allRemainingIssue)
+        updateColumns(column.column_name, allRemainingIssue)
     }
 
-    /* function updateTaskForIssue(taskToUpdate, issueId) {
+    function updateTaskForIssue(taskToUpdate, issueId) {
+
         const updatedIssues = issues.map(issue => {
             if (issue.id === issueId) {
                 issue.tasks = issue.tasks.map(task => {
                     if (task.id === taskToUpdate.id) {
                         task.isDone = taskToUpdate.isDone
                     }
+
                     return task;
                 });
-
                 return issue;
             }
         })
         setIssues(updatedIssues)
-    } */
+    }
+
+    function updateIssues(issueId, updatedTasks) {
+        const updatedIssues = issues.map(issue => {
+            if (issue.id === issueId) {
+                issue.tasks = updatedTasks
+            }
+            return issue
+        })
+        setIssues(updatedIssues)
+    }
 
     return (
         <SectionInStyle>
             {column && column?.issues?.map((issue) =>
-                <span>
+                <span key={issue.id}>
                     <IssueHeadline
-                        key={issue.id}
+
                         title={issue.title}
-                        onDeleteIssue={() => deleteIssueToDo(issue.id)} />
+                        onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
+                        task={task}
                         issue={issue}
+                        issues={issues}
+                        setIssues={setIssues}
                         setTasks={setTasks}
                         addTask={addTask}
-                        /* updateTaskForIssue={updateTaskForIssue} */ />
+                        updateTaskForIssue={updateTaskForIssue}
+                        updateIssues={updateIssues} />
                 </span>
             )}
             <KanbanIssueForm submitIssueFunction={addIssue} />

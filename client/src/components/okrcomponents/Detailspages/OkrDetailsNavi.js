@@ -11,6 +11,8 @@ export default function OkrDetailsNavigation() {
             <NavLinkStyled to={url + "/OkrBoard"}>The Okr board</NavLinkStyled>
             <NavLinkStyled to={url + "/OkrHistory"}>History</NavLinkStyled>
             <NavLinkStyled to={url + "/OkrForMe"}>How can it help?</NavLinkStyled>
+            <NavLinkStyled to={url + "/Objectives"}>Objectives</NavLinkStyled>
+            <NavLinkStyled to={url + "/KeyResults"}>Key Results</NavLinkStyled>
         </NavigationInStyle >)
 }
 
