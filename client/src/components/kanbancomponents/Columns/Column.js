@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
 import { v4 as uuid4 } from 'uuid';
-import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
-export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, updateColumns }) {
-    const LOCAL_STORAGE_KEY = 'tasksToBeDone'
-    const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
-
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tasks))
-    }, [tasks])
+export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
 
     function addTask(issueId, task) {
         const newTask = { title: task.title, isDone: false, id: uuid4() };
-        setTasks([...tasks, newTask])
         addTaskToIssue(issueId, newTask)
     }
 
@@ -38,10 +29,8 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
                 <KanbanIssues
                     column={column}
                     issues={issues}
-                    setTasks={setTasks}
                     setIssues={setIssues}
                     onAddIssueToColumn={onAddIssueToColumn}
-                    updateColumns={updateColumns}
                     addTask={addTask}
                     addTaskToIssue={addTaskToIssue} />
             </section>

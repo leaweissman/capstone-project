@@ -1,15 +1,12 @@
-import styled from 'styled-components';
-import Task from '../components/kanbancomponents/Tasks/Task';
-import KeyResult from '..//components/okrcomponents/KeyResults/KeyResult';
 
-export default function Tasks(keyResult) {
+import styled from 'styled-components';
+
+export default function Tasks() {
+
     return (
         <TaskBackgroundInStyle>
             <p>Welcome to Tasks</p>
-            <p>Here are your task which need to be done</p>
-            <Task />
-            <p>KeyResults</p>
-            <KeyResult keyResult={keyResult} />
+
         </TaskBackgroundInStyle>
     );
 }

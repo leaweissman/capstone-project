@@ -2,34 +2,31 @@ import styled from 'styled-components';
 import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
-export default function KanbanTask({ setTasks, addTask, issue, task, updateTaskForIssue, issues, updateIssues }) {
+export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues }) {
 
 
     function toggleCheckbox(idToToggle) {
-        const newTask = issue.tasks.map((task) => {
+        return issue.tasks.map((task) => {
             if (task.id === idToToggle) {
                 task.isDone = !task.isDone;
+                updateTaskForIssue(task, issue.id)
             }
             return task
         })
-        setTasks(newTask)
-        updateTaskForIssue(newTask, issue.id)
     }
 
     function deleteTask(idToDelete) {
         const allRemainingTasks = issue.tasks.filter(
             (task) => task.id !== idToDelete)
         issues.task = allRemainingTasks
-        setTasks(allRemainingTasks)
         updateIssues(issue.id, allRemainingTasks)
     }
 
 
 
     function deleteAll() {
-        setTasks([]);
+        updateIssues(issue.id, [])
     }
-
 
     return (
         <SectionInStyle>
@@ -39,7 +36,6 @@ export default function KanbanTask({ setTasks, addTask, issue, task, updateTaskF
                     key={id}
                     title={title}
                     isDone={isDone}
-                    task={task}
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}

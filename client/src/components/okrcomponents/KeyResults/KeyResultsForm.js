@@ -33,7 +33,8 @@ export default function KeyResultForm({ submitFunction }) {
                 name='title'
                 placeholder='E.g. Buying equiptment'
                 onChange={handleChange}
-                value={keyResult.title} />
+                value={keyResult.title}
+                keyResult={keyResult} />
             <button>Add my Key Result!</button>
         </form>
     )

@@ -27,6 +27,9 @@ export default function Okr() {
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY_OBJECTIVE, JSON.stringify(objectives))
     })
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_KEY_KEYRESULT, JSON.stringify(keyResults))
+    })
 
     function deleteMission() {
         setMissions([]);
@@ -71,7 +74,8 @@ export default function Okr() {
             <KeyResultForm submitFunction={addKeyResult} />
             {keyResults.map((keyResult) => (
                 <KeyResult
-                    keyResult={keyResult} />
+                    keyResult={keyResult}
+                    keyResults={keyResults} />
             ))}
             <button onClick={deleteKeyResults}>Delete all Key Results</button>
         </OkrInStyle>

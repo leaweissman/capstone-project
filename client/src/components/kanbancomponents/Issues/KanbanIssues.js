@@ -5,23 +5,20 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, setTasks, addTask, task, updateColumns }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
-        onAddIssueToColumn(column.column_name, newIssue)
-        setIssues([...issues, newIssue])
+        onAddIssueToColumn(column.id, newIssue)
     }
 
     function deleteIssue(idToDelete) {
         const allRemainingIssue = issues.filter(
             (issue) => issue.id !== idToDelete)
         setIssues(allRemainingIssue)
-        updateColumns(column.column_name, allRemainingIssue)
     }
 
     function updateTaskForIssue(taskToUpdate, issueId) {
-
         const updatedIssues = issues.map(issue => {
             if (issue.id === issueId) {
                 issue.tasks = issue.tasks.map(task => {
@@ -31,8 +28,8 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
 
                     return task;
                 });
-                return issue;
             }
+            return issue;
         })
         setIssues(updatedIssues)
     }
@@ -49,18 +46,15 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
 
     return (
         <SectionInStyle>
-            {column && column?.issues?.map((issue) =>
+            {issues?.map((issue) =>
                 <span key={issue.id}>
                     <IssueHeadline
-
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
-                        task={task}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}
-                        setTasks={setTasks}
                         addTask={addTask}
                         updateTaskForIssue={updateTaskForIssue}
                         updateIssues={updateIssues} />

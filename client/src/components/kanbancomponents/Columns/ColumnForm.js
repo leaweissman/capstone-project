@@ -1,23 +1,18 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
-
 
 export default function ColumnForm({ submitFunction }) {
     const initialColumn = {
         column_name: '',
-        issues: []
     }
 
     const [column, setColumn] = useState(initialColumn);
-
 
     const handleChange = (event) => {
         const field = event.target;
         const value = field.value;
         setColumn({
             ...column,
-            [field.name]: value,
-            id: uuid4(),
+            [field.name]: value
         })
     }
 
@@ -26,7 +21,6 @@ export default function ColumnForm({ submitFunction }) {
         submitFunction(column)
         setColumn(initialColumn)
     }
-
 
     return (
         <form className='form'>
