@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 import styled from "styled-components";
 
 export default function KanbanIssueForm({ submitIssueFunction }) {
     const initialIssue = {
-        issue_name: '',
+        title: '',
         tasks: []
     }
 
     const [issue, setIssue] = useState(initialIssue);
-
-    console.log(initialIssue)
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -19,26 +16,24 @@ export default function KanbanIssueForm({ submitIssueFunction }) {
         setIssue({
             ...issue,
             [field.name]: value,
-            id: uuid4(),
         });
     }
 
     function handleSubmit(event) {
-        console.log(setIssue)
         event.preventDefault();
         submitIssueFunction(issue)
         setIssue(initialIssue)
     }
     return (
-        <FormInStyle className='form'>
+        <FormInStyle className="form" onSubmit={handleSubmit}>
             <HeaderInStyle>add Issue Name</HeaderInStyle>
             <input
-                name='issue_name'
+                name='title'
                 type='text'
                 placeholder='Whats the issue?'
                 onChange={handleChange}
-                value={issue.issue_name} />
-            <ButtonInStyle onSubmit={handleSubmit}>Add Issue Name</ButtonInStyle>
+                value={issue.title} />
+            <ButtonInStyle>Add Issue Name</ButtonInStyle>
         </FormInStyle>
     )
 }

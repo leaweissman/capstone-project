@@ -1,47 +1,48 @@
 import styled from 'styled-components';
-import TaskToDo from '../Tasks/KanbanToDo';
+import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
-import IssueToDo from '../Issues/KanbanSingleIssue';
 
-export default function KanbanTask({ taskToDo, setTaskToDo, addTaskToDo }) {
-
+export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues }) {
 
 
     function toggleCheckbox(idToToggle) {
-        const newTask = taskToDo.map((task) => {
+        return issue.tasks.map((task) => {
             if (task.id === idToToggle) {
                 task.isDone = !task.isDone;
+                updateTaskForIssue(task, issue.id)
             }
-            return task;
+            return task
         })
-        setTaskToDo(newTask);
     }
 
-    function deleteTaskToDo(idToDelete) {
-        const allRemainingTasks = taskToDo.filter(
-            (task, id) => task.id !== idToDelete)
-        setTaskToDo(allRemainingTasks)
+    function deleteTask(idToDelete) {
+        const allRemainingTasks = issue.tasks.filter(
+            (task) => task.id !== idToDelete)
+        issues.task = allRemainingTasks
+        updateIssues(issue.id, allRemainingTasks)
     }
+
+
 
     function deleteAll() {
-        setTaskToDo([]);
+        updateIssues(issue.id, [])
     }
-
 
     return (
         <SectionInStyle>
             <HeadingInStyle>My Tasks: </HeadingInStyle>
-            {IssueToDo && IssueToDo?.taskToDo?.map(({ title, isDone, id }) =>
-                <TaskToDo
+            {issue?.tasks?.map(({ title, isDone, id }) =>
+                <Task
                     key={id}
                     title={title}
                     isDone={isDone}
                     onToggleTask={() => toggleCheckbox(id)}
-                    onDeleteTask={() => deleteTaskToDo(id)} />
+                    onDeleteTask={() => deleteTask(id)} />
             )}
-            <KanbanTasksForm onCreateTaskToDo={addTaskToDo} />
+            <KanbanTasksForm issue={issue} submitTask={addTask} />
 
-            <button onClick={deleteAll}>delete all tasks
+            <button onClick={deleteAll}>
+                delete all tasks
             </button>
 
         </SectionInStyle>

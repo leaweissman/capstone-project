@@ -5,12 +5,12 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import styled from "styled-components";
-import History from '../kanbancomponents/Detailpages/History';
-import BoardInfo from '../kanbancomponents/Detailpages/KanbanBoradInfo';
-import ForMe from '../kanbancomponents/Detailpages/ForMe';
-import DetailsNavigation from '../kanbancomponents/Detailpages/Detailsnavigation';
+import History from './History';
+import BoardInfo from './KanbanBoradInfo';
+import ForMe from './ForMe';
+import DetailsNavigation from './Detailsnavigation';
 
-function Characters() {
+export default function KanbanRouting() {
     let { path } = useRouteMatch();
 
     return (
@@ -38,7 +38,6 @@ function Characters() {
 
 }
 
-export default Characters;
 
 
 

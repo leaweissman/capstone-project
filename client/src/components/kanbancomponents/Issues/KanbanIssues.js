@@ -1,44 +1,66 @@
 import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
 
-import IssueToDo from '../Issues/KanbanSingleIssue';
-import KanbanIssueForm from '../Issues/KanbabIssuesForm';
+import IssueHeadline from './IssueHeadline';
+import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issueToDo, setIssueToDo, onAddIssueToColumn, column, setTaskToDo, taskToDo, onAddTaskToDo }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask }) {
 
-    function addIssueToDo(title) {
-        const newIssueToDo = { title: title, isDone: false, id: uuid4() };
-        onAddIssueToColumn(column.column_name, newIssueToDo)
-        setIssueToDo([...issueToDo, newIssueToDo])
+    function addIssue(issue) {
+        const newIssue = { ...issue, id: uuid4() };
+        onAddIssueToColumn(column.id, newIssue)
     }
 
-    console.log(issueToDo)
+    function deleteIssue(idToDelete) {
+        const allRemainingIssue = issues.filter(
+            (issue) => issue.id !== idToDelete)
+        setIssues(allRemainingIssue)
+    }
 
-    function deleteIssueToDo(idToDelete) {
-        const allRemainingIssue = issueToDo.filter(
-            (issue, id) => issue.id !== idToDelete)
-        setIssueToDo(allRemainingIssue)
+    function updateTaskForIssue(taskToUpdate, issueId) {
+        const updatedIssues = issues.map(issue => {
+            if (issue.id === issueId) {
+                issue.tasks = issue.tasks.map(task => {
+                    if (task.id === taskToUpdate.id) {
+                        task.isDone = taskToUpdate.isDone
+                    }
+
+                    return task;
+                });
+            }
+            return issue;
+        })
+        setIssues(updatedIssues)
+    }
+
+    function updateIssues(issueId, updatedTasks) {
+        const updatedIssues = issues.map(issue => {
+            if (issue.id === issueId) {
+                issue.tasks = updatedTasks
+            }
+            return issue
+        })
+        setIssues(updatedIssues)
     }
 
     return (
         <SectionInStyle>
-            {column && column?.issues?.map(({ title, id }) =>
-                <span>
-                    <IssueToDo
-                        key={id}
-                        title={title}
-                        onDeleteIssue={() => deleteIssueToDo(id)} />
+            {issues?.map((issue) =>
+                <span key={issue.id}>
+                    <IssueHeadline
+                        title={issue.title}
+                        onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
-                        issueToDo={issueToDo}
-                        taskToDo={taskToDo}
-                        setTaskToDo={setTaskToDo}
-                        onAddTaskToDo={onAddTaskToDo} />
+                        issue={issue}
+                        issues={issues}
+                        setIssues={setIssues}
+                        addTask={addTask}
+                        updateTaskForIssue={updateTaskForIssue}
+                        updateIssues={updateIssues} />
                 </span>
             )}
-            <KanbanIssueForm onCreateIssueToDo={addIssueToDo} />
-
-
+            <KanbanIssueForm submitIssueFunction={addIssue} />
         </SectionInStyle>
     )
 }

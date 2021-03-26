@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 
-export default function KanbanTasksForm({ submitTaskFunction }) {
+export default function KanbanTasksForm({ issue, submitTask }) {
     const initialTask = {
-        task_name: ''
+        title: ''
     }
 
     const [task, setTask] = useState(initialTask)
+
 
     const handleChange = (event) => {
         event.preventDefault();
@@ -14,27 +14,27 @@ export default function KanbanTasksForm({ submitTaskFunction }) {
         const value = field.value;
         setTask({
             ...task,
-            [field.name]: value,
-            id: uuid4(),
+            [field.name]: value
         });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        submitTaskFunction(task)
+        submitTask(issue.id, task)
         setTask(initialTask)
 
     }
     return (
-        <form className='form'>
+        <form className='form' onSubmit={handleSubmit}>
             <h3>add further tasks</h3>
             <input
                 name='title'
                 type='text'
                 placeholder='Anything else to do?'
                 onChange={handleChange}
-                value={task.task_name} />
-            <button onSubmit={handleSubmit} >Add task</button>
+                value={task.title}
+                task={task} />
+            <button >Add task</button>
         </form>
     )
 }

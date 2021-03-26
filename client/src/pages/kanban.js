@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
-import KanbanCard from '../components/kanbancomponents/Columns/KanbanCard';
-import KanbanForm from '../components/kanbancomponents/Columns/KanbanForm';
-import KanbanInfoTag from '../components/kanbancomponents/KanbanInfo';
-import KanbanInformation from '../components/kanbancomponents/KanbanNavigation';
+import Column from '../components/kanbancomponents/Columns/Column';
+import KanbanInfoTag from '../components/kanbancomponents/Detailpages/KanbanInfo';
+import KanbanInformation from '../components/kanbancomponents/Detailpages/KanbanNavigation';
+import ColumnForm from '../components/kanbancomponents/Columns/ColumnForm';
 
 
 export default function Kanban() {
     const LOCAL_STORAGE_KEY_KANBAN_COLUMN = 'kanbancolumn'
-    const LOCAL_STORAGE_KEY_KANBAN_ISSUE = 'issueToBeDone'
+    const LOCAL_STORAGE_KEY_KANBAN_ISSUE = 'issues'
+
     const [columns, setColumns] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_COLUMN) ?? []);
-    const [issueToDo, setIssueToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_ISSUE) ?? []);
+    const [issues, setIssues] = useState(loadFromLocal(LOCAL_STORAGE_KEY_KANBAN_ISSUE) ?? []);
+
 
     const addColumn = (column) =>
-        setColumns([...columns, column]);
+        setColumns([...columns, { ...column, id: uuidv4() }]);
 
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_COLUMN, JSON.stringify(columns))
@@ -22,8 +25,8 @@ export default function Kanban() {
 
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_ISSUE, JSON.stringify(issueToDo))
-    }, [issueToDo])
+        localStorage.setItem(LOCAL_STORAGE_KEY_KANBAN_ISSUE, JSON.stringify(issues))
+    }, [issues])
 
     function deleteColumns() {
         setColumns([]);
@@ -36,29 +39,29 @@ export default function Kanban() {
     }
 
 
-    function addIssueToColumn(columnName, issue) {
-        const columnToUpdate = columns.find(column => column.column_name === columnName)
-        columnToUpdate.issues.push(issue)
-        setColumns([...columns, columnToUpdate])
-
+    function addIssueToColumn(columnId, issue) {
+        issue.columnId = columnId;
+        setIssues([...issues, issue]);
     }
 
     return (
         <Wrapper>
-            <button onClick={deleteColumns}>Delete All Column</button>
             <KanbanHeader>Welcome to Kanban</KanbanHeader>
             <KanbanInfoTag />
             <KanbanInformation />
-            <KanbanForm submitFunction={addColumn} />
-            {columns.map((column) => (
-                <KanbanCard
+            <ColumnForm submitFunction={addColumn} />
+            {columns && columns.map((column) => (
+                <Column
                     column={column}
-                    issueToDo={issueToDo}
-                    setIssueToDo={setIssueToDo}
+                    issues={issues.filter(issue => issue.columnId === column.id)}
+                    setIssues={setIssues}
                     onDeleteMyColumn={deleteMyColumn}
-                    onAddIssueToColumn={addIssueToColumn} />
+                    onAddIssueToColumn={addIssueToColumn}
+                    key={column?.id}
+                />
             ))}
 
+            <button onClick={deleteColumns}>Delete All Columns</button>
         </Wrapper>
     );
 

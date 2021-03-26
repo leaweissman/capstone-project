@@ -5,24 +5,27 @@ import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
-export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIssueToDo, onAddIssueToColumn }) {
-    const LOCAL_STORAGE_KEY = 'tasksToBeDone'
-    const [taskToDo, setTaskToDo] = useState(loadFromLocal(LOCAL_STORAGE_KEY) ?? []);
+export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, issue }) {
+    const LOCAL_STORAGE_KEY_SCRUM_TASKS = 'scrumtasks'
+    const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY_SCRUM_TASKS) ?? []);
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(taskToDo))
-    }, [taskToDo])
+        localStorage.setItem(LOCAL_STORAGE_KEY_SCRUM_TASKS, JSON.stringify(tasks))
+    }, [tasks])
 
-    function addTaskToDo(title) {
-        const newTaskToDo = { title: title, isDone: false, id: uuid4() };
-        setTaskToDo([...taskToDo, newTaskToDo])
+    function addTask(title) {
+        const newTask = { title: title, isDone: false, id: uuid4() };
+        setTasks([...tasks, newTask])
     }
 
     function addTaskToIssue(issueName, task) {
-        console.log(issueName)
-        const taskToUpdate = issueToDo.find(issue => issue.task_name === issueName)
-        taskToUpdate.tasks.push(taskToDo)
-        setIssueToDo([...issueToDo, taskToUpdate])
+        const updatedIssues = issue.map(issue => {
+            if (issue.title === issueName) {
+                issue.tasks.push(task)
+            }
+            return issue;
+        })
+        setIssues(updatedIssues)
     }
 
     return (
@@ -33,10 +36,10 @@ export default function KanbanCard({ column, onDeleteMyColumn, issueToDo, setIss
             <section>
                 <KanbanIssues
                     column={column}
-                    issueToDo={issueToDo}
-                    setIssueToDo={setIssueToDo}
+                    issues={issues}
+                    setIssues={setIssues}
                     onAddIssueToColumn={onAddIssueToColumn}
-                    addTaskToDo={addTaskToDo}
+                    addTask={addTask}
                     addTaskToIssue={addTaskToIssue} />
             </section>
         </Wrapper>

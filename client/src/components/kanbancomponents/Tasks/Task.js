@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function TaskToDo({ title, isDone = false, onToggleTask, onDeleteTask }) {
+export default function Task({ title, isDone = false, onToggleTask, onDeleteTask }) {
     return (
         <TaskInStyle>
             <input type='checkbox' checked={isDone} onChange={onToggleTask} />
