@@ -79,8 +79,7 @@ export default function Okr() {
             {keyResults.map((keyResult) => (
                 <KeyResult
                     key={keyResult.id}
-                    keyResult={keyResult}
-                    keyResults={keyResults} />
+                    keyResult={keyResult} />
             ))}
             <button onClick={deleteKeyResults}>Delete all Key Results</button>
         </OkrInStyle>
