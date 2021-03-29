@@ -1,26 +1,18 @@
-import { useState, useEffect } from 'react';
 import { v4 as uuid4 } from 'uuid';
-import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
-import KanbanIssues from '../Issues/KanbanIssues';
+import ScrumIssue from '../ScrumIssues/ScrumIssue';
 
 
-export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn, issue }) {
-    const LOCAL_STORAGE_KEY_SCRUM_TASKS = 'scrumtasks'
-    const [tasks, setTasks] = useState(loadFromLocal(LOCAL_STORAGE_KEY_SCRUM_TASKS) ?? []);
+export default function ScrumColumn({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
 
-    useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_KEY_SCRUM_TASKS, JSON.stringify(tasks))
-    }, [tasks])
-
-    function addTask(title) {
-        const newTask = { title: title, isDone: false, id: uuid4() };
-        setTasks([...tasks, newTask])
+    function addTask(issueId, task) {
+        const newTask = { title: task.title, isDone: false, id: uuid4() };
+        addTaskToIssue(issueId, newTask)
     }
 
-    function addTaskToIssue(issueName, task) {
-        const updatedIssues = issue.map(issue => {
-            if (issue.title === issueName) {
+    function addTaskToIssue(issueId, task) {
+        const updatedIssues = issues.map(issue => {
+            if (issue.id === issueId) {
                 issue.tasks.push(task)
             }
             return issue;
@@ -34,7 +26,7 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
             <button onClick={() => onDeleteMyColumn(column.id)}
             >Delete my Column</button>
             <section>
-                <KanbanIssues
+                <ScrumIssue
                     column={column}
                     issues={issues}
                     setIssues={setIssues}
@@ -59,5 +51,3 @@ const ColumnName = styled.h3`
 color: var(--primaryblue);
 text-align: left;
 `
-
-

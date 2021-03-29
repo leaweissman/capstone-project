@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
+import ScrumColumn from '../components/scrumcomponents/ScrumColumns/ScrumColumn';
+import ScrumColumnForm from '../components/scrumcomponents/ScrumColumns/ScrumColumnForm';
 import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
-import Column from '../components/kanbancomponents/Columns/Column';
-import ColumnForm from '../components/kanbancomponents/Columns/ColumnForm';
 import ScrumInfoTag from '../components/scrumcomponents/AboutScrum/ScrumInfoTag';
-import ScrumNavigation from '../components/scrumcomponents/AboutScrum/ScrumNavigation';
+import ScrumInformation from '../components/scrumcomponents/AboutScrum/ScrumNavigation';
 
 
 
 export default function Scrum() {
     const LOCAL_STORAGE_KEY_SCRUM_COLUMN = 'scrumcolumn'
-    const LOCAL_STORAGE_KEY_SCRUM_ISSUE = 'scrumissue'
+    const LOCAL_STORAGE_KEY_SCRUM_ISSUE = 'scrumissues'
+
     const [columns, setColumns] = useState(loadFromLocal(LOCAL_STORAGE_KEY_SCRUM_COLUMN) ?? []);
     const [issues, setIssues] = useState(loadFromLocal(LOCAL_STORAGE_KEY_SCRUM_ISSUE) ?? []);
 
+
     const addColumn = (column) =>
-        setColumns([...columns, column]);
+        setColumns([...columns, { ...column, id: uuidv4() }]);
 
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY_SCRUM_COLUMN, JSON.stringify(columns))
@@ -37,29 +40,26 @@ export default function Scrum() {
     }
 
 
-    function addIssueToColumn(columnName, issue) {
-        const updatedColumns = columns.map(column => {
-            if (column.column_name === columnName) {
-                column.issues.push(issue);
-            }
-            return column;
-        });
-        setColumns(updatedColumns)
+    function addIssueToColumn(columnId, issue) {
+        issue.columnId = columnId;
+        setIssues([...issues, issue]);
     }
 
     return (
         <Wrapper>
-            <KanbanHeader>Welcome to Scrum</KanbanHeader>
+            <ScrumHeader>Welcome to Scrum</ScrumHeader>
             <ScrumInfoTag />
-            <ScrumNavigation />
-            <ColumnForm submitFunction={addColumn} />
-            {columns.map((column) => (
-                <Column
+            <ScrumInformation />
+            <ScrumColumnForm submitFunction={addColumn} />
+            {columns && columns.map((column) => (
+                <ScrumColumn
                     column={column}
-                    issues={issues}
+                    issues={issues.filter(issue => issue.columnId === column.id)}
                     setIssues={setIssues}
                     onDeleteMyColumn={deleteMyColumn}
-                    onAddIssueToColumn={addIssueToColumn} />
+                    onAddIssueToColumn={addIssueToColumn}
+                    key={column?.id}
+                />
             ))}
 
             <button onClick={deleteColumns}>Delete All Columns</button>
@@ -76,6 +76,6 @@ margin: 1rem;
 padding: 0.8rem;
 `
 
-const KanbanHeader = styled.h1`
+const ScrumHeader = styled.h1`
 color: white;
 position:center;`
