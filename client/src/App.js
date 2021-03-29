@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Home from './pages/home';
-import Tasks from './pages/tasks';
+import TasksOverview from './pages/taskoverview';
 import Navbar from './components/Navbar';
 import Okr from './pages/okr';
 import Kanban from './pages/kanban';
@@ -22,7 +22,7 @@ function App() {
           </Route>
 
           <Route path='/tasks'>
-            <Tasks />
+            <TasksOverview />
           </Route>
 
           <Route path='/okr'>

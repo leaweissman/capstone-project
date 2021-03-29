@@ -27,6 +27,7 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
             >Delete my Column</button>
             <section>
                 <KanbanIssues
+                    showForm
                     column={column}
                     issues={issues}
                     setIssues={setIssues}

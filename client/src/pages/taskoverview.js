@@ -1,14 +1,14 @@
 import KeyResult from '../components/okrcomponents/KeyResults/KeyResult';
-import IssueHeadline from '../components/kanbancomponents/Issues/IssueHeadline';
+import KanbanIssues from '../components/kanbancomponents/Issues/KanbanIssues';
 import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
 import styled from 'styled-components';
 
 
-export default function Tasks() {
+export default function TasksOverview() {
     const keyResult = loadFromLocal("okrKeyResult") || [];
 
-    const kanbanIssue = loadFromLocal("issues") || [];
-    console.log(kanbanIssue)
+    const kanbanIssues = loadFromLocal("issues") || [];
+
 
 
     return (
@@ -19,9 +19,9 @@ export default function Tasks() {
                 return <KeyResult keyResult={singleKeyResult} />
             })}
             <h4>Here are your tasks</h4>
-            {kanbanIssue.map((singleIssue) => {
-                return <IssueHeadline issue={singleIssue} />
-            })}
+
+            <KanbanIssues issues={kanbanIssues} />
+
         </TaskBackgroundInStyle>
     );
 }

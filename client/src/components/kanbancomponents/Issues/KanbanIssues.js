@@ -5,7 +5,7 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -44,6 +44,7 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
         setIssues(updatedIssues)
     }
 
+
     return (
         <SectionInStyle>
             {issues?.map((issue) =>
@@ -52,6 +53,7 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
+                        showForm={showForm}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}
@@ -60,7 +62,7 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
                         updateIssues={updateIssues} />
                 </span>
             )}
-            <KanbanIssueForm submitIssueFunction={addIssue} />
+            {showForm && <KanbanIssueForm submitIssueFunction={addIssue} />}
         </SectionInStyle>
     )
 }
