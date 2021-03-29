@@ -59,26 +59,26 @@ export default function Okr() {
             <OkrNavigation />
             <OkrBigPicture />
             <OkrMissionForm submitFunction={addMission} />
-            {missions.map(({ mission, id }) => (
+            {missions.map((mission) => (
                 <OkrMissionCard
-                    key={id}
+                    key={mission.id}
                     mission={mission}
                 />
             ))}
             <button onClick={deleteMission}>Delete the Mission</button>
 
             <OkrObjectiveForm submitFunction={addObjective} />
-            {objectives.map(({ objective, id }) => (
+            {objectives.map((objective) => (
                 <OkrObjectives
-                    key={id}
+                    key={objective.id}
                     objective={objective} />
             ))}
             <button onClick={deleteObjectives}>Delete all Objectives</button>
 
             <KeyResultForm submitFunction={addKeyResult} />
-            {keyResults.map(({ keyResult, id }) => (
+            {keyResults.map((keyResult) => (
                 <KeyResult
-                    key={id}
+                    key={keyResult.id}
                     keyResult={keyResult}
                     keyResults={keyResults} />
             ))}
