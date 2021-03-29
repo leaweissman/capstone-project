@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 
 export default function OkrMissionForm({ submitFunction }) {
 
     const initialMission = {
-        mission_name: '',
+        title: '',
     };
 
     const [mission, setMission] = useState(initialMission);
@@ -16,7 +15,6 @@ export default function OkrMissionForm({ submitFunction }) {
         setMission({
             ...mission,
             [field.name]: value,
-            id: uuid4(),
         });
     }
 
@@ -30,10 +28,11 @@ export default function OkrMissionForm({ submitFunction }) {
         <form className='form' onSubmit={submitForm}>
             <input
                 type='text'
-                name='mission_name'
+                name='title'
                 placeholder='E.g. North Star'
                 onChange={handleChange}
-                value={mission.mission_name} />
+                value={mission.title}
+                mission={mission} />
             <button>Add my long term goals</button>
         </form>
     )

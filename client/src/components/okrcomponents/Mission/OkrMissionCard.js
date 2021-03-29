@@ -4,7 +4,7 @@ export default function OkrMissionCard({ mission }) {
     return (
         <Wrapper>
             <h6>Mission statement:</h6>
-            <p>{mission.mission_name}</p>
+            <p>{mission.title}</p>
         </Wrapper>
     )
 }

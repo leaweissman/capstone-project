@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
-
 export default function KeyResultForm({ submitFunction }) {
 
     const initialKeyResult = {
@@ -16,7 +14,6 @@ export default function KeyResultForm({ submitFunction }) {
         setKeyResult({
             ...keyResult,
             [field.name]: value,
-            id: uuid4(),
         });
     }
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { v4 as uuid4 } from 'uuid';
 
 export default function OkrObjectiveForm({ submitFunction }) {
 
@@ -15,8 +14,7 @@ export default function OkrObjectiveForm({ submitFunction }) {
         const value = field.value;
         setObjective({
             ...objective,
-            [field.name]: value,
-            id: uuid4(),
+            [field.name]: value
         });
     }
 
@@ -33,7 +31,8 @@ export default function OkrObjectiveForm({ submitFunction }) {
                 name='title'
                 placeholder='E.g. Journey to the North star'
                 onChange={handleChange}
-                value={objective.title} />
+                value={objective.title}
+                objective={objective} />
             <button>Add my Objective</button>
         </form>
     )

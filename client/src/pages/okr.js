@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
 import styled from 'styled-components';
 import OkrNavigation from '../components/okrcomponents/Detailspages/OkrNavigation';
@@ -18,8 +19,6 @@ export default function Okr() {
     const [objectives, setObjectives] = useState(loadFromLocal[LOCAL_STORAGE_KEY_OBJECTIVE] ?? []);
     const [keyResults, setKeyResults] = useState(loadFromLocal[LOCAL_STORAGE_KEY_KEYRESULT] ?? []);
 
-    const addMission = (mission) =>
-        setMissions([...missions, mission]);
 
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY_MISSION, JSON.stringify(missions))
@@ -31,12 +30,15 @@ export default function Okr() {
         localStorage.setItem(LOCAL_STORAGE_KEY_KEYRESULT, JSON.stringify(keyResults))
     })
 
+    const addMission = (mission) =>
+        setMissions([...missions, { ...mission, id: uuidv4 }]);
+
     function deleteMission() {
         setMissions([]);
     }
 
     const addObjective = (objective) =>
-        setObjectives([...objectives, objective]);
+        setObjectives([...objectives, { ...objective, id: uuidv4 }]);
 
 
     function deleteObjectives() {
@@ -44,7 +46,7 @@ export default function Okr() {
     }
 
     const addKeyResult = (keyResult) =>
-        setKeyResults([...keyResults, keyResult]);
+        setKeyResults([...keyResults, { ...keyResult, id: uuidv4 }]);
 
     function deleteKeyResults() {
         setKeyResults([]);
@@ -59,6 +61,7 @@ export default function Okr() {
             <OkrMissionForm submitFunction={addMission} />
             {missions.map((mission) => (
                 <OkrMissionCard
+                    key={mission.id}
                     mission={mission}
                 />
             ))}
@@ -67,6 +70,7 @@ export default function Okr() {
             <OkrObjectiveForm submitFunction={addObjective} />
             {objectives.map((objective) => (
                 <OkrObjectives
+                    key={objective.id}
                     objective={objective} />
             ))}
             <button onClick={deleteObjectives}>Delete all Objectives</button>
@@ -74,6 +78,7 @@ export default function Okr() {
             <KeyResultForm submitFunction={addKeyResult} />
             {keyResults.map((keyResult) => (
                 <KeyResult
+                    key={keyResult.id}
                     keyResult={keyResult}
                     keyResults={keyResults} />
             ))}
