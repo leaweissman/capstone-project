@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function ScrumTaskForm({ issue, submitTask }) {
     const initialTask = {
@@ -37,4 +38,9 @@ export default function ScrumTaskForm({ issue, submitTask }) {
             <button >Add task</button>
         </form>
     )
+}
+
+ScrumTaskForm.propTypes = {
+    issue: PropTypes.object,
+    submitTask: PropTypes.func,
 }

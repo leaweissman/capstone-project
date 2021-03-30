@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 export default function KeyResultForm({ submitFunction }) {
 
     const initialKeyResult = {
@@ -35,4 +37,8 @@ export default function KeyResultForm({ submitFunction }) {
             <button>Add my Key Result!</button>
         </form>
     )
+}
+
+KeyResultForm.propTypes = {
+    submitFunction: PropTypes.func,
 }

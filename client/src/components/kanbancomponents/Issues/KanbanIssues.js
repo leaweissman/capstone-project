@@ -1,11 +1,11 @@
 import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -54,6 +54,7 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
                         showForm={showForm}
+                        showCheckbox={showCheckbox}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}
@@ -67,6 +68,13 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
     )
 }
 
+KanbanIssues.propTypes = {
+    setIssues: PropTypes.func,
+    onAddIssueToColumn: PropTypes.func,
+    addTask: PropTypes.func,
+    showForm: PropTypes.func,
+    showCheckbox: PropTypes.func,
+}
 
 const SectionInStyle = styled.section`
 border: 2px solid var(--primaryblue);

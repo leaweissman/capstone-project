@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
-import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
+import loadFromLocal from '../components/lib/loadFromLocal';
 import Column from '../components/kanbancomponents/Columns/Column';
 import KanbanInfoTag from '../components/kanbancomponents/Detailpages/KanbanInfo';
 import KanbanInformation from '../components/kanbancomponents/Detailpages/KanbanNavigation';
@@ -69,10 +69,10 @@ export default function Kanban() {
 
 const Wrapper = styled.div`
 text-align: center;
-border: solid 2px var(--primarypink);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `
 
 const KanbanHeader = styled.h1`

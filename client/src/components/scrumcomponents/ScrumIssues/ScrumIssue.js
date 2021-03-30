@@ -1,11 +1,11 @@
 import { v4 as uuid4 } from 'uuid';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
 import ScrumIssueHeadline from './ScrumIssueHeadline';
 import ScrumIssueForm from '../ScrumIssues/ScrumIssueForm';
 import ScrumTask from '../ScrumTasks/ScrumTask';
 
-export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, column, addTask }) {
+export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showScrumForm }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -52,6 +52,7 @@ export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, col
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <ScrumTask
+                        showScrumForm={showScrumForm}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}
@@ -60,14 +61,20 @@ export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, col
                         updateIssues={updateIssues} />
                 </span>
             )}
-            <ScrumIssueForm submitIssueFunction={addIssue} />
+            {showScrumForm && <ScrumIssueForm submitIssueFunction={addIssue} />}
         </SectionInStyle>
     )
 }
 
-
+ScrumIssues.propTypes = {
+    issues: PropTypes.object,
+    setIssues: PropTypes.object,
+    onAddIssueToColumn: PropTypes.func,
+    column: PropTypes.object,
+    addTask: PropTypes.func,
+}
 const SectionInStyle = styled.section`
-border: 2px solid var(--primaryblue);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 2rem;
 padding: .5rem;
 `

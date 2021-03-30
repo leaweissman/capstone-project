@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
@@ -36,6 +37,7 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
                     key={id}
                     title={title}
                     isDone={isDone}
+                    showCheckbox
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}
@@ -49,6 +51,13 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
     )
 }
 
+KanbanTask.propTypes = {
+    addTask: PropTypes.func,
+    updateTaskForIssue: PropTypes.func,
+    showForm: PropTypes.func,
+    updateIssues: PropTypes.func,
+
+}
 
 const SectionInStyle = styled.section`
 border: 2px solid white;

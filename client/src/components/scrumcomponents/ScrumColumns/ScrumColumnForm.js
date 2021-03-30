@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 
 export default function ScrumColumnForm({ submitFunction }) {
     const initialColumn = {
@@ -36,4 +38,8 @@ export default function ScrumColumnForm({ submitFunction }) {
             <button onClick={handleSubmit}>Submit</button>
         </form>
     )
+}
+
+ScrumColumnForm.propTypes = {
+    submitFunction: PropTypes.func,
 }

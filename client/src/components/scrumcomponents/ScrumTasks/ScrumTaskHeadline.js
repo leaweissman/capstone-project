@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function ScrumTaskHeadline({ title, isDone = false, onToggleTask, onDeleteTask }) {
     return (
@@ -17,3 +18,10 @@ const DeleteInStyle = styled.span`
 color: var(--primarypink);
 
 `
+
+ScrumTaskHeadline.propTypes = {
+    title: PropTypes.string,
+    isDone: PropTypes.bool,
+    onToggleTask: PropTypes.func,
+    onDeleteTask: PropTypes.func,
+}

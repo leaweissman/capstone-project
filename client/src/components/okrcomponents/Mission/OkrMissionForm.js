@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function OkrMissionForm({ submitFunction }) {
 
@@ -36,4 +37,8 @@ export default function OkrMissionForm({ submitFunction }) {
             <button>Add my long term goals</button>
         </form>
     )
+}
+
+OkrMissionForm.propTypes = {
+    submitFunction: PropTypes.func,
 }

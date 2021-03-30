@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 export default function KanbanIssueForm({ submitIssueFunction }) {
@@ -36,6 +37,10 @@ export default function KanbanIssueForm({ submitIssueFunction }) {
             <ButtonInStyle>Add Issue Name</ButtonInStyle>
         </FormInStyle>
     )
+}
+
+KanbanIssueForm.propTypes = {
+    submitIssueFunction: PropTypes.func,
 }
 
 const FormInStyle = styled.form`

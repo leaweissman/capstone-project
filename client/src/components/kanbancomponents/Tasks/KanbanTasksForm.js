@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 export default function KanbanTasksForm({ issue, submitTask }) {
     const initialTask = {
@@ -37,4 +38,8 @@ export default function KanbanTasksForm({ issue, submitTask }) {
             <button >Add task</button>
         </form>
     )
+}
+
+KanbanTasksForm.propTypes = {
+    submitTask: PropTypes.func,
 }

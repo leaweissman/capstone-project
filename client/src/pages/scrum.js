@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 import ScrumColumn from '../components/scrumcomponents/ScrumColumns/ScrumColumn';
 import ScrumColumnForm from '../components/scrumcomponents/ScrumColumns/ScrumColumnForm';
-import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
+import loadFromLocal from '../components/lib/loadFromLocal';
 import ScrumInfoTag from '../components/scrumcomponents/AboutScrum/ScrumInfoTag';
 import ScrumInformation from '../components/scrumcomponents/AboutScrum/ScrumNavigation';
 
@@ -70,10 +70,10 @@ export default function Scrum() {
 
 const Wrapper = styled.div`
 text-align: center;
-border: solid 2px var(--primarypink);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `
 
 const ScrumHeader = styled.h1`

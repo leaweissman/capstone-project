@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
+import loadFromLocal from '../components/lib/loadFromLocal';
 import styled from 'styled-components';
 import OkrNavigation from '../components/okrcomponents/Detailspages/OkrNavigation';
 import OkrBigPicture from '../components/okrcomponents/OkrBigPicture';
@@ -92,8 +92,8 @@ margin-bottom: 7rem;
 `
 
 const Infotag = styled.p`
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align: center;
-border: solid 2px var(--primarypink);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;

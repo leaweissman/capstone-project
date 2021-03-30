@@ -1,14 +1,23 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default function Task({ title, isDone = false, onToggleTask, onDeleteTask }) {
+export default function Task({ title, isDone = false, onToggleTask, onDeleteTask, showCheckbox }) {
     return (
         <TaskInStyle>
-            <input type='checkbox' checked={isDone} onChange={onToggleTask} />
+            {showCheckbox && <input type='checkbox' checked={isDone} onChange={onToggleTask} />}
             {title}
             <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>
         </TaskInStyle>
     )
 }
+
+Task.propTypes = {
+    title: PropTypes.string,
+    isDone: PropTypes.bool,
+    onToggleTask: PropTypes.func,
+    onDeleteTask: PropTypes.func,
+}
+
 const TaskInStyle = styled.section`
 text-align: left;
 margin: .3rem;`

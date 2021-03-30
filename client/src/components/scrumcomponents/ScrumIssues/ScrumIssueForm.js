@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 export default function ScrumIssueForm({ submitIssueFunction }) {
@@ -36,6 +37,10 @@ export default function ScrumIssueForm({ submitIssueFunction }) {
             <ButtonInStyle>Add Issue Name</ButtonInStyle>
         </FormInStyle>
     )
+}
+
+ScrumIssueForm.propTypes = {
+    submitIssueFunction: PropTypes.func,
 }
 
 const FormInStyle = styled.form`

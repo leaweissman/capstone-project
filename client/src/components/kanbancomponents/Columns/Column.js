@@ -1,4 +1,5 @@
 import { v4 as uuid4 } from 'uuid';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
@@ -39,16 +40,22 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
     )
 }
 
+Column.popTypes = {
+    title: PropTypes.string,
+    isDone: PropTypes.bool,
+    onDeleteMyColumn: PropTypes.func,
+    onAddIssueToColumn: PropTypes.func,
+}
 
 const Wrapper = styled.div`
 text-align: center;
-border: solid 2px var(--primarypink);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
 background-color: white;
 `
 const ColumnName = styled.h3`
-color: var(--primaryblue);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align: left;
 `
