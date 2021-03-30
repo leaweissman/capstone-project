@@ -24,8 +24,8 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
     return (
         <Wrapper>
             <ColumnName>{column.column_name}</ColumnName>
-            <button onClick={() => onDeleteMyColumn(column.id)}
-            >Delete my Column</button>
+            <ButtonInStyle onClick={() => onDeleteMyColumn(column.id)}
+            >Delete my Column</ButtonInStyle>
             <section>
                 <KanbanIssues
                     showForm
@@ -56,6 +56,13 @@ padding: 0.8rem;
 background-color: white;
 `
 const ColumnName = styled.h3`
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align: left;
+color: var(--primaryblue);
+`
+const ButtonInStyle = styled.button`
+margin: 1rem;
+border-radius: 1rem;
+border: solid 1px var(--primaryblue);
+color: var(--primaryblue);
+background-color: white;
 `

@@ -63,6 +63,6 @@ const SectionInStyle = styled.section`
 border: 2px solid white;
 `
 const HeadingInStyle = styled.p`
-margin: .5;
+margin: 20px;
 text-align:left;
 `

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import isValidColumnForm from '../../lib/ValidateFunction';
 
@@ -29,15 +30,15 @@ export default function ColumnForm({ submitFunction }) {
     return (
         <form className='form'>
             <label>
-                Column Name:
-            <input
+
+                <InputInStyle
                     type='text'
                     name='column_name'
                     placeholder='Column Name'
                     onChange={handleChange}
                     value={column.column_name} />
             </label>
-            <button onClick={handleSubmit}>Submit</button>
+            <ButtonInStyle onClick={handleSubmit}>Submit</ButtonInStyle>
         </form>
     )
 }
@@ -45,3 +46,14 @@ export default function ColumnForm({ submitFunction }) {
 ColumnForm.propTypes = {
     submitFunction: PropTypes.func,
 }
+
+
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`
+const ButtonInStyle = styled.button`
+border-radius: 1rem;
+border: none;
+`
+
