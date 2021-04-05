@@ -21,7 +21,7 @@ body {
   width: 100%;
   color: white;
   font-family: sans-serif;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 1.1rem;
   margin: 0;
   padding: 0 0 5rem 0;

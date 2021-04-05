@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import OkrIcon from '../components/okrcomponents/OkrIcon';
 import ScrumIcon from '../components/scrumcomponents/ScrumIcon';
-import KanbanIcon from '../components/kanbancomponents/KanbanIcon';
+import kanbanDashboardIcon from '../assets/kanbanDashboardIcon.svg';
 import toDoIcon from '../assets/toDoIcon.svg';
 import home from '../assets/home.svg';
 
@@ -24,7 +24,7 @@ export default function Navbar() {
                 </NavLinkStyledOkr>
 
                 <NavLinkStyledKanban to='/kanban'>
-                    <KanbanIcon />
+                    <StyledKanban src={kanbanDashboardIcon} alt='' />
                 </NavLinkStyledKanban>
 
                 <NavLinkStyledScrum to='/scrum'>
@@ -36,98 +36,96 @@ export default function Navbar() {
 
 }
 
-/* const NavLinkStyled = styled(NavLink)`
-display: flex;
-flex-wrap: wrap;
-flex-direction: row;
-text-decoration: none;
-padding: .25rem;
-color: var(--primaryorange);
-border: .5px solid var(--primaryorange);
-border-radius: 1rem;
-height:2rem;
-margin: 1rem;
-
-
-&:hover{
-    color: var(--primaryblue);
-}
-
-&.active{
-    color: var(--primaryblue);
-    font-weight: bold;
-}
-` */
-
 const Stylednav = styled.nav`
 display: flex;
-flex-wrap: wrap;
-flex-direction: row;
 justify-content: space-evenly;
-background-color: white;
-border-radius: 2rem;
+background-color: #B0D0D1;
+border-radius: 1rem;
 position: fixed; 
-width: 80%;
-height: 9%;
 bottom: 0;
-left: 3rem;
-right: 0;
+width: 100%;
+height: 80px;
 `
 
 const NavLinkStyledHome = styled(NavLink)`
-width: 30px;
-padding: 20px 5px;
+width: 2.5rem;
+padding: 2rem .5rem;
 
 &:hover{
-    width: 35px;
+    background: #E2A790;
+    border-radius: 3rem;
+
 }
 &.active{
-    width: 35px;
+    background: #E2A790;
+    border-radius: 3rem;
 }
 `
+
 
 const NavLinkStyledOkr = styled(NavLink)`
-width: 30px;
-padding: 20px 5px;
+width: 2.5rem;
+padding: 2rem .5rem;
 
 &:hover{
-    width: 35px;
+    background: #BE683E;
+    border-radius: 3rem;
+
 }
 &.active{
-    width: 35px;
+    background: #BE683E;
+    border-radius: 3rem;
 }
 `
+
 
 const NavLinkStyledScrum = styled(NavLink)`
-width: 30px;
-padding: 20px 5px;
+width: 2.5rem;
+padding: 2rem .5rem;
 
 &:hover{
-    width: 35px;
+    background: #B2C390;
+    border-radius: 3rem;
+
 }
 &.active{
-    width: 35px;
+    background: #B2C390;
+    border-radius: 3rem;
 }
 `
 
-const NavLinkStyledKanban = styled(NavLink)`
-margin-top: 1.25rem;
-margin-left: 5rem;
-margin-right: 0;
-padding: 0;
+const StyledKanban = styled.img`
+width: 1.7rem;
+margin-top: 1.9rem;
+padding-left: .35rem;`
 
+const NavLinkStyledKanban = styled(NavLink)`
+width: 2rem;
+
+&:hover{
+    background: #F0BBA8;
+    border-radius: 3rem;
+
+}
+&.active{
+    background: #F0BBA8;
+    border-radius: 3rem;
+} 
 
 `
 
 
 const NavLinkStyledToDo = styled(NavLink)`
-width: 30px;
-padding: 20px 5px;
+width: 2.5rem;
+padding: 2rem .5rem;
 
 &:hover{
-    width: 35px;
+    background: #D2E9F7;
+    border-radius: 3rem;
+
 }
 &.active{
-    width: 35px;
+    background: #D2E9F7;
+    border-radius: 3rem;
 }
 `
