@@ -19,11 +19,16 @@ const NavLinkStyled = styled(NavLink)`
 display: flex;
 flex-direction: row;
 text-decoration: none;
-padding: 0.5rem;
-color: var(--primarypink);
+background-color: #FFB600;
+color: white;
+width: 100%;
+padding: .5rem .5rem .5rem 4rem;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: .5rem;
+
 
 &:hover{
-    color: var(--primaryblue);
+    color: #E85D2F;
 }
 
 &.active{

@@ -77,8 +77,10 @@ KanbanIssues.propTypes = {
 }
 
 const SectionInStyle = styled.section`
-border: 2px solid var(--primaryblue);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 2rem;
 padding: .5rem;
+color: white;
+background-color:#D6846B;
 `
 

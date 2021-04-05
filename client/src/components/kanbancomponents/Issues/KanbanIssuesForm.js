@@ -27,14 +27,14 @@ export default function KanbanIssueForm({ submitIssueFunction }) {
     }
     return (
         <FormInStyle className="form" onSubmit={handleSubmit}>
-            <HeaderInStyle>add Issue Name</HeaderInStyle>
-            <input
+
+            <InputInStyle
                 name='title'
                 type='text'
                 placeholder='Whats the issue?'
                 onChange={handleChange}
                 value={issue.title} />
-            <ButtonInStyle>Add Issue Name</ButtonInStyle>
+            <ButtonInStyle>+</ButtonInStyle>
         </FormInStyle>
     )
 }
@@ -49,8 +49,11 @@ padding-bottom: 0;
 margin-bottom:0;`
 
 const ButtonInStyle = styled.button`
-color: var(--primaryblue);
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
 margin: .5rem;`
 
-const HeaderInStyle = styled.h4`
-color:var(--primaryblue);`
+const InputInStyle = styled.input`
+border: none;`

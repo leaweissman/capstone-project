@@ -15,7 +15,6 @@ function OkrRouting() {
 
     return (
         <div>
-            <TopicInStyle>About Okr</TopicInStyle>
             <OkrDetailsNavigation />
 
             <Switch>

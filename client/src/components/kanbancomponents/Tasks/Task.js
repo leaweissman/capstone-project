@@ -23,6 +23,6 @@ text-align: left;
 margin: .3rem;`
 
 const DeleteInStyle = styled.span`
-color: var(--primarypink);
+color: white;
 
 `

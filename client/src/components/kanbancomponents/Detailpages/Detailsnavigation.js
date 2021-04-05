@@ -15,8 +15,8 @@ export default function DetailsNavigation() {
 }
 
 const NavLinkStyled = styled(NavLink)`
-  background: var(--primarypink);
-  color: var(--primaryblue);
+  background:#AB3E1D ;
+  color: white;
   border-radius: 30rem;
   margin: 1rem;
   padding: 1rem;
@@ -27,12 +27,14 @@ const NavLinkStyled = styled(NavLink)`
 
 
   &:hover {
-    background: rebeccapurple;
-    color: var(--primarypink);}
+    background: white;
+    color: #AB3E1D;}
 
     &.active{ 
-    color: var(--primarypink);
-    background-color:var(--primaryyellow);
+    color: white;
+    background-color:#D6846B;
+    border: 2px solid #AB3E1D;
+    font-weight: 2;
     };
 `
 const NavigationInStyle = styled.nav`

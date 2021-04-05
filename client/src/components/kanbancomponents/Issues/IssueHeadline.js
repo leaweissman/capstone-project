@@ -19,9 +19,9 @@ IssueHeadline.propTypes = {
 }
 
 const IssueInStyle = styled.h4`
-color: var(--primaryblue);
+color: white;
 text-align:left;
 margin: 1rem;`
 
 const DeleteIssueInSyle = styled.span`
-color: var(--primarypink);`
+color: white;`

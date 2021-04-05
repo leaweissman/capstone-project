@@ -15,7 +15,7 @@ function ScrumRouting() {
 
     return (
         <div>
-            <TopicInStyle>About Scrum</TopicInStyle>
+
             <ScrumDetailsNavigation />
             <Switch>
                 <Route exact path={path}>

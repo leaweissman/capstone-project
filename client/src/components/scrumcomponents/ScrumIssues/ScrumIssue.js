@@ -74,6 +74,7 @@ ScrumIssues.propTypes = {
     addTask: PropTypes.func,
 }
 const SectionInStyle = styled.section`
+background-color:#7B9651;
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 2rem;
 padding: .5rem;

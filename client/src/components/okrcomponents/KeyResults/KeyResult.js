@@ -19,5 +19,6 @@ box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color:#FAC993;
+color:#AB3E1D   ;
 `

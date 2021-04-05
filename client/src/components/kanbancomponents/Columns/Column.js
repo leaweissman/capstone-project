@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
 
 
+
 export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
 
     function addTask(issueId, task) {
@@ -49,20 +50,22 @@ Column.popTypes = {
 
 const Wrapper = styled.div`
 text-align: center;
+color: white;
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color: #BF3604;
 `
 const ColumnName = styled.h3`
 text-align: left;
-color: var(--primaryblue);
+color: white;
+background-color:#BF3604;
 `
 const ButtonInStyle = styled.button`
-margin: 1rem;
-border-radius: 1rem;
-border: solid 1px var(--primaryblue);
-color: var(--primaryblue);
-background-color: white;
-`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+padding: .1rem;
+margin: 1rem;`

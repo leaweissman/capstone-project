@@ -38,7 +38,7 @@ export default function ColumnForm({ submitFunction }) {
                     onChange={handleChange}
                     value={column.column_name} />
             </label>
-            <ButtonInStyle onClick={handleSubmit}>Submit</ButtonInStyle>
+            <ButtonInStyle onClick={handleSubmit}>+</ButtonInStyle>
         </form>
     )
 }
@@ -52,8 +52,11 @@ const InputInStyle = styled.input`
 border: none;
 margin: 1rem;
 `
+
 const ButtonInStyle = styled.button`
-border-radius: 1rem;
-border: none;
-`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+margin: .5rem;`
 

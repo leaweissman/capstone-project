@@ -28,13 +28,13 @@ export default function ScrumIssueForm({ submitIssueFunction }) {
     return (
         <FormInStyle className="form" onSubmit={handleSubmit}>
             <HeaderInStyle>add Issue Name</HeaderInStyle>
-            <input
+            <InputInStyle
                 name='title'
                 type='text'
                 placeholder='Whats the issue?'
                 onChange={handleChange}
                 value={issue.title} />
-            <ButtonInStyle>Add Issue Name</ButtonInStyle>
+            <ButtonInStyle>+</ButtonInStyle>
         </FormInStyle>
     )
 }
@@ -49,8 +49,18 @@ padding-bottom: 0;
 margin-bottom:0;`
 
 const ButtonInStyle = styled.button`
-color: var(--primaryblue);
+color: #3C591E;
+background-color:#B6CE91;
+border-radius: .5rem;
+border-color:#3C591E;
 margin: .5rem;`
 
+
 const HeaderInStyle = styled.h4`
-color:var(--primaryblue);`
+color: white;
+padding: .25rem;`
+
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`

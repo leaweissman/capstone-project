@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Elementscrum from '../assets/1x/Elementscrum.png';
 import styled from 'styled-components';
 import ScrumColumn from '../components/scrumcomponents/ScrumColumns/ScrumColumn';
 import ScrumColumnForm from '../components/scrumcomponents/ScrumColumns/ScrumColumnForm';
 import loadFromLocal from '../components/lib/loadFromLocal';
 import ScrumInfoTag from '../components/scrumcomponents/AboutScrum/ScrumInfoTag';
 import ScrumInformation from '../components/scrumcomponents/AboutScrum/ScrumNavigation';
+import walkingman from '../assets/walkingman.png';
+import ScrumIcon from '../components/scrumcomponents/ScrumIcon';
 
 
 
@@ -47,7 +50,9 @@ export default function Scrum() {
 
     return (
         <Wrapper>
-            <ScrumHeader>Welcome to Scrum</ScrumHeader>
+            <IconInStyle>
+                <ScrumIcon />
+            </IconInStyle>
             <ScrumInfoTag />
             <ScrumInformation />
             <ScrumColumnForm submitFunction={addColumn} />
@@ -62,20 +67,30 @@ export default function Scrum() {
                 />
             ))}
 
-            <button onClick={deleteColumns}>Delete All Columns</button>
+            <ButtonInStyle onClick={deleteColumns}>Delete All Columns</ButtonInStyle>
+            <img src={walkingman} alt='' />
         </Wrapper>
     );
 
 }
 
 const Wrapper = styled.div`
+background-image: url(${Elementscrum});
+background-size: cover;
+background-attachment: fixed;
+width: 100%;
 text-align: center;
-border-radius: 1rem;
-margin: 1rem; 
-padding: 0.8rem;
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `
 
-const ScrumHeader = styled.h1`
-color: white;
-position:center;`
+
+const ButtonInStyle = styled.button`
+color: #3C591E;
+background-color:#B6CE91;
+border-radius: .5rem;
+border-color:#3C591E;
+margin: .5rem;`
+
+const IconInStyle = styled.div`
+width: 10%;
+margin-left: 45%;
+padding-top: 1rem;`

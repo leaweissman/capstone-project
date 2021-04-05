@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export default function ScrumTaskForm({ issue, submitTask }) {
@@ -27,15 +28,15 @@ export default function ScrumTaskForm({ issue, submitTask }) {
     }
     return (
         <form className='form' onSubmit={handleSubmit}>
-            <h3>add further tasks</h3>
-            <input
+            <AddInStyle>add further tasks</AddInStyle>
+            <InputInStyle
                 name='title'
                 type='text'
                 placeholder='Anything else to do?'
                 onChange={handleChange}
                 value={task.title}
                 task={task} />
-            <button >Add task</button>
+            <ButtonInStyle >+</ButtonInStyle>
         </form>
     )
 }
@@ -44,3 +45,17 @@ ScrumTaskForm.propTypes = {
     issue: PropTypes.object,
     submitTask: PropTypes.func,
 }
+const ButtonInStyle = styled.button`
+color: #3C591E;
+background-color:#B6CE91;
+border-radius: .5rem;
+border-color:#3C591E;
+margin: .5rem;`
+
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`
+
+const AddInStyle = styled.p`
+margin: 0;`

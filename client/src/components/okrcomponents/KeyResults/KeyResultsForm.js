@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 export default function KeyResultForm({ submitFunction }) {
@@ -27,14 +28,14 @@ export default function KeyResultForm({ submitFunction }) {
 
     return (
         <form className='form' onSubmit={submitKeyResult}>
-            <input
+            <InputInStyle
                 type='text'
                 name='title'
                 placeholder='E.g. Buying equiptment'
                 onChange={handleChange}
                 value={keyResult.title}
                 keyResult={keyResult} />
-            <button>Add my Key Result!</button>
+            <ButtonInStyle>Add my Key Result!</ButtonInStyle>
         </form>
     )
 }
@@ -42,3 +43,16 @@ export default function KeyResultForm({ submitFunction }) {
 KeyResultForm.propTypes = {
     submitFunction: PropTypes.func,
 }
+
+const ButtonInStyle = styled.button`
+color: #E85D2F;
+background-color:#FDD577;
+border-radius: .5rem;
+border-color:#E85D2F;
+margin: .5rem;
+padding: .25rem;`
+
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`

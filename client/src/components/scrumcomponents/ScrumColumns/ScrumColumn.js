@@ -24,8 +24,8 @@ export default function ScrumColumn({ column, onDeleteMyColumn, issues, setIssue
     return (
         <Wrapper>
             <ColumnName>{column.column_name}</ColumnName>
-            <button onClick={() => onDeleteMyColumn(column.id)}
-            >Delete my Column</button>
+            <ButtonInStyle onClick={() => onDeleteMyColumn(column.id)}
+            >Delete my Column</ButtonInStyle>
             <section>
                 <ScrumIssue
                     showScrumForm
@@ -53,9 +53,14 @@ box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color: #3C591E;
 `
 const ColumnName = styled.h3`
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align: left;
 `
+const ButtonInStyle = styled.button`
+color: #3C591E;
+background-color:#B6CE91;
+border-radius: .5rem;
+border-color:#3C591E;
+margin: .5rem;`

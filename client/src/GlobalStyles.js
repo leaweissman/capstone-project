@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import backgroundcolorfull from '../src/assets/backgroundcolorfull.jpg';
+import Elementmain from '../src/assets/1x/Elementmain.png';
 
 export default createGlobalStyle`
 :root {
@@ -15,14 +15,14 @@ export default createGlobalStyle`
 }
 
 body {
-  background-image: url(${backgroundcolorfull});
+  background-image: url(${Elementmain});
   background-size: cover;
-    background-attachment: fixed;
+  background-attachment: fixed;
   width: 100%;
-  /*   background-color: var(--primaryyellow); */
-  color: var(--primarygreen);
+  color: white;
   font-family: sans-serif;
-  font-size: 1.25rem;
+  font-weight: 300;
+  font-size: 1.1rem;
   margin: 0;
   padding: 0 0 5rem 0;
 }
@@ -36,5 +36,7 @@ select,
 
   h1, h2, h3, h4 {
     margin: 0;
+
+    
   }
 `;

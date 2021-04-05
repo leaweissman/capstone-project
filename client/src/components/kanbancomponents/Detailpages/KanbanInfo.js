@@ -16,10 +16,10 @@ export default function KanbanInfoTag() {
 }
 
 const Infotag = styled.p`
+color: white;
 text-align: center;
-border: solid 2px var(--primarypink);
-border-radius: 1rem;
+border-radius: .5rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color: #D6846B;
 `

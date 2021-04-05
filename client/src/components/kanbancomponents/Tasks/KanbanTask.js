@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
+
 export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm }) {
 
 
@@ -42,10 +43,9 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
                     onDeleteTask={() => deleteTask(id)} />
             )}
             {showForm && <KanbanTasksForm issue={issue} submitTask={addTask} />}
-
-            <button onClick={deleteAll}>
+            <ButtonInStyle onClick={deleteAll}>
                 delete all tasks
-            </button>
+            </ButtonInStyle>
 
         </SectionInStyle>
     )
@@ -60,9 +60,21 @@ KanbanTask.propTypes = {
 }
 
 const SectionInStyle = styled.section`
-border: 2px solid white;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+background-color: #FAB8A4;
+border-radius: 2rem;
+margin: 1rem;
+padding: 1rem;
 `
 const HeadingInStyle = styled.p`
 margin: 20px;
 text-align:left;
 `
+
+const ButtonInStyle = styled.button`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+padding: .1rem;
+margin: 1rem;`

@@ -1,38 +1,42 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-
+import OkrIcon from '../components/okrcomponents/OkrIcon';
+import ScrumIcon from '../components/scrumcomponents/ScrumIcon';
+import KanbanIcon from '../components/kanbancomponents/KanbanIcon';
+import toDoIcon from '../assets/toDoIcon.svg';
+import home from '../assets/home.svg';
 
 export default function Navbar() {
 
     return (
         <footer>
             <Stylednav>
-                <NavLinkStyled exact to="/">
-                    <h5>Home</h5>
-                </NavLinkStyled>
+                <NavLinkStyledHome exact to="/">
+                    <img src={home} alt='' />
+                </NavLinkStyledHome>
 
-                <NavLinkStyled to='/tasks'>
-                    <h5>Tasks</h5>
-                </NavLinkStyled>
+                <NavLinkStyledToDo to='/tasks'>
+                    <img src={toDoIcon} alt='' />
+                </NavLinkStyledToDo>
 
-                <NavLinkStyled to='/okr'>
-                    <h5>OKR</h5>
-                </NavLinkStyled>
+                <NavLinkStyledOkr to='/okr'>
+                    <OkrIcon />
+                </NavLinkStyledOkr>
 
-                <NavLinkStyled to='/kanban'>
-                    <h5>Kanban</h5>
-                </NavLinkStyled>
+                <NavLinkStyledKanban to='/kanban'>
+                    <KanbanIcon />
+                </NavLinkStyledKanban>
 
-                <NavLinkStyled to='/scrum'>
-                    <h5>Scrum</h5>
-                </NavLinkStyled>
+                <NavLinkStyledScrum to='/scrum'>
+                    <ScrumIcon />
+                </NavLinkStyledScrum>
             </Stylednav>
         </footer>
     );
 
 }
 
-const NavLinkStyled = styled(NavLink)`
+/* const NavLinkStyled = styled(NavLink)`
 display: flex;
 flex-wrap: wrap;
 flex-direction: row;
@@ -40,10 +44,10 @@ text-decoration: none;
 padding: .25rem;
 color: var(--primaryorange);
 border: .5px solid var(--primaryorange);
-border-radius: 4rem;
-margin: .5rem;
-/* height: 2rem;
- */
+border-radius: 1rem;
+height:2rem;
+margin: 1rem;
+
 
 &:hover{
     color: var(--primaryblue);
@@ -53,15 +57,77 @@ margin: .5rem;
     color: var(--primaryblue);
     font-weight: bold;
 }
-`
+` */
+
 const Stylednav = styled.nav`
-display:flex;
-flex-wrap:wrap;
-justify-content: center;
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+justify-content: space-evenly;
 background-color: white;
-border-radius: 4rem;
+border-radius: 2rem;
 position: fixed; 
+width: 80%;
+height: 9%;
 bottom: 0;
-left: 0;
+left: 3rem;
 right: 0;
+`
+
+const NavLinkStyledHome = styled(NavLink)`
+width: 30px;
+padding: 20px 5px;
+
+&:hover{
+    width: 35px;
+}
+&.active{
+    width: 35px;
+}
+`
+
+const NavLinkStyledOkr = styled(NavLink)`
+width: 30px;
+padding: 20px 5px;
+
+&:hover{
+    width: 35px;
+}
+&.active{
+    width: 35px;
+}
+`
+
+const NavLinkStyledScrum = styled(NavLink)`
+width: 30px;
+padding: 20px 5px;
+
+&:hover{
+    width: 35px;
+}
+&.active{
+    width: 35px;
+}
+`
+
+const NavLinkStyledKanban = styled(NavLink)`
+margin-top: 1.25rem;
+margin-left: 5rem;
+margin-right: 0;
+padding: 0;
+
+
+`
+
+
+const NavLinkStyledToDo = styled(NavLink)`
+width: 30px;
+padding: 20px 5px;
+
+&:hover{
+    width: 35px;
+}
+&.active{
+    width: 35px;
+}
 `

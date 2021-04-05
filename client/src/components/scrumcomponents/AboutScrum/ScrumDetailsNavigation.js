@@ -15,8 +15,8 @@ export default function ScrumDetailsNavigation() {
 }
 
 const NavLinkStyled = styled(NavLink)`
-  background: var(--primarypink);
-  color: var(--primaryblue);
+background-color:#B6CE91;;
+  color: #3C591E;
   border-radius: 30rem;
   margin: 1rem;
   padding: 1rem;
@@ -27,12 +27,12 @@ const NavLinkStyled = styled(NavLink)`
 
 
   &:hover {
-    background: rebeccapurple;
-    color: var(--primarypink);}
+    background: #3C591E;
+    color: #B6CE91;}
 
     &.active{ 
-    color: var(--primarypink);
-    background-color:var(--primaryyellow);
+    background-color: #3C591E;
+    color: #B6CE91;
     };
 `
 const NavigationInStyle = styled.nav`

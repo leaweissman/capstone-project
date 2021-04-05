@@ -8,10 +8,11 @@ export default function ScrumInfoTag() {
     )
 }
 const InfoCardInStyle = styled.div`
-background-color: white;
+background-color: #B6CE91;
 border-radius: 5rem; 
-border: 2px solid var(--primarypink);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 margin: 2rem;
+padding: .5rem;
 `
 const InfoHeaderInStyle = styled.h3`
 margin: 1rem;

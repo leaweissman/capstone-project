@@ -17,8 +17,8 @@ export default function OkrDetailsNavigation() {
 }
 
 const NavLinkStyled = styled(NavLink)`
-  background: var(--primarypink);
-  color: var(--primaryblue);
+  background: #E85D2F;
+  color: #FAC993    ;
   border-radius: 30rem;
   margin: 1rem;
   padding: 1rem;
@@ -29,12 +29,12 @@ const NavLinkStyled = styled(NavLink)`
 
 
   &:hover {
-    background: rebeccapurple;
-    color: var(--primarypink);}
+    background: #FAC993;
+    color: #E85D2F;}
 
     &.active{ 
-    color: var(--primarypink);
-    background-color:var(--primaryyellow);
+    color: #E85D2F;
+    background-color:#FAC993;
     };
 `
 const NavigationInStyle = styled.nav`

@@ -18,9 +18,8 @@ ScrumIssueHeadline.propTypes = {
     onDeleteIssue: PropTypes.func,
 }
 const IssueInStyle = styled.h4`
-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align:left;
 margin: 1rem;`
 
 const DeleteIssueInSyle = styled.span`
-color: var(--primarypink);`
+color: white;`

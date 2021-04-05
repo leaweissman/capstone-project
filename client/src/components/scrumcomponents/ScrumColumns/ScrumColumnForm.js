@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 
@@ -28,14 +29,14 @@ export default function ScrumColumnForm({ submitFunction }) {
         <form className='form'>
             <label>
                 Column Name:
-            <input
+            <InputInStyle
                     type='text'
                     name='column_name'
                     placeholder='Column Name'
                     onChange={handleChange}
                     value={column.column_name} />
             </label>
-            <button onClick={handleSubmit}>Submit</button>
+            <ButtonInStyle onClick={handleSubmit}>+</ButtonInStyle>
         </form>
     )
 }
@@ -43,3 +44,14 @@ export default function ScrumColumnForm({ submitFunction }) {
 ScrumColumnForm.propTypes = {
     submitFunction: PropTypes.func,
 }
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`
+
+const ButtonInStyle = styled.button`
+color: #3C591E;
+background-color:#B6CE91;
+border-radius: .5rem;
+border-color:#3C591E;
+margin: .5rem;`
