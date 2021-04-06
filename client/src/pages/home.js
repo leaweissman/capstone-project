@@ -19,20 +19,20 @@ export default function Home() {
                     <IconInStyleOkr>
                         <OkrIcon />
                     </IconInStyleOkr>
-                    <p>Get me started with Okr</p>
+                    <p data-testid="okrrouting">Get me started with Okr</p>
                 </NavLinkStyledOkr>
 
                 <NavLinkStyledKanban to="/kanban">
                     <IconInStyleKanban>
                         <KanbanIcon />
                     </IconInStyleKanban>
-                    <p>get me started with kanban</p>
+                    <p data-testid="kanbanrouting">get me started with kanban</p>
                 </NavLinkStyledKanban>
                 <NavLinkStyledScrum to="/scrum">
                     <IconInStyleScrum>
                         <ScrumIcon />
                     </IconInStyleScrum>
-                    <p>get me started with scrum</p>
+                    <p data-testid="scrumrouting">get me started with scrum</p>
                 </NavLinkStyledScrum>
             </Stylednav>
 

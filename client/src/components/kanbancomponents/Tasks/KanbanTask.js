@@ -54,7 +54,6 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
 KanbanTask.propTypes = {
     addTask: PropTypes.func,
     updateTaskForIssue: PropTypes.func,
-    showForm: PropTypes.func,
     updateIssues: PropTypes.func,
 
 }

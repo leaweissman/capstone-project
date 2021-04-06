@@ -52,9 +52,7 @@ export default function ScrumTask({ addTask, issue, updateTaskForIssue, issues, 
 
 ScrumTask.propTypes = {
     addTask: PropTypes.func,
-    issue: PropTypes.object,
     updateTaskForIssue: PropTypes.func,
-    issues: PropTypes.object,
     updateIssues: PropTypes.func,
 }
 const SectionInStyle = styled.section`

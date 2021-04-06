@@ -72,7 +72,6 @@ KanbanIssues.propTypes = {
     setIssues: PropTypes.func,
     onAddIssueToColumn: PropTypes.func,
     addTask: PropTypes.func,
-    showForm: PropTypes.func,
     showCheckbox: PropTypes.func,
 }
 

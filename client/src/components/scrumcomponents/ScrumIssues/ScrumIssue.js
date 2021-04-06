@@ -1,5 +1,4 @@
 import { v4 as uuid4 } from 'uuid';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ScrumIssueHeadline from './ScrumIssueHeadline';
 import ScrumIssueForm from '../ScrumIssues/ScrumIssueForm';
@@ -66,13 +65,7 @@ export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, col
     )
 }
 
-ScrumIssues.propTypes = {
-    issues: PropTypes.object,
-    setIssues: PropTypes.object,
-    onAddIssueToColumn: PropTypes.func,
-    column: PropTypes.object,
-    addTask: PropTypes.func,
-}
+
 const SectionInStyle = styled.section`
 background-color:#7B9651;
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);

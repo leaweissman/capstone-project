@@ -1,5 +1,4 @@
 import { v4 as uuid4 } from 'uuid';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ScrumIssue from '../ScrumIssues/ScrumIssue';
 
@@ -39,13 +38,7 @@ export default function ScrumColumn({ column, onDeleteMyColumn, issues, setIssue
         </Wrapper>
     )
 }
-ScrumColumn.propTypes = {
-    column: PropTypes.object,
-    onDeleteMyColumn: PropTypes.func,
-    issues: PropTypes.object,
-    setIssues: PropTypes.object,
-    onAddIssueToColumn: PropTypes.func,
-}
+
 
 const Wrapper = styled.div`
 text-align: center;
