@@ -5,7 +5,7 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox, showDelete, showIssueDelete }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -50,11 +50,13 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
             {issues?.map((issue) =>
                 <span key={issue.id}>
                     <IssueHeadline
+                        showIssueDelete={showIssueDelete}
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
                         showForm={showForm}
                         showCheckbox={showCheckbox}
+                        showDelete={showDelete}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}

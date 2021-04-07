@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ScrumTaskHeadline from '../ScrumTasks/ScrumTaskHeadline';
 import ScrumTaskForm from '../ScrumTasks/ScrumTaskForm';
 
-export default function ScrumTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showScrumForm }) {
+export default function ScrumTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showScrumForm, showDelete, showCheckbox }) {
 
 
     function toggleCheckbox(idToToggle) {
@@ -37,6 +37,8 @@ export default function ScrumTask({ addTask, issue, updateTaskForIssue, issues, 
                     key={id}
                     title={title}
                     isDone={isDone}
+                    showDelete={showDelete}
+                    showCheckbox={showCheckbox}
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}

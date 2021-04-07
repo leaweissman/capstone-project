@@ -1,0 +1,5 @@
+#KanbanInfo
+
+```js
+<KanbanInfoTag />
+```

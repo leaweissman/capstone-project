@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import isValidColumnForm from '../../lib/ValidateFunction';
+import isValidColumnForm from '../../../lib/ValidateFunction';
 
 export default function ColumnForm({ submitFunction }) {
     const initialColumn = {

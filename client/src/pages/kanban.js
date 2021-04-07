@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Elementkanban from '../assets/1x/Elementkanban.png';
 import womansitting from '../assets/womansitting.png';
 import styled from 'styled-components';
-import loadFromLocal from '../components/lib/loadFromLocal';
+import loadFromLocal from '../lib/loadFromLocal';
 import Column from '../components/kanbancomponents/Columns/Column';
 import KanbanInfoTag from '../components/kanbancomponents/Detailpages/KanbanInfo';
 import KanbanInformation from '../components/kanbancomponents/Detailpages/KanbanNavigation';

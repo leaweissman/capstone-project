@@ -6,11 +6,11 @@ import kanbanDashboardIcon from '../assets/kanbanDashboardIcon.svg';
 import toDoIcon from '../assets/toDoIcon.svg';
 import home from '../assets/home.svg';
 
-export default function Navbar() {
+export default function Navbar({ isStatic }) {
 
     return (
         <footer>
-            <Stylednav>
+            <Stylednav isStatic={isStatic}>
                 <NavLinkStyledHome exact to="/">
                     <img src={home} alt='' />
                 </NavLinkStyledHome>
@@ -41,7 +41,7 @@ display: flex;
 justify-content: space-evenly;
 background-color: #B0D0D1;
 border-radius: 1rem;
-position: fixed; 
+position: ${(props) => (props.isStatic ? "static" : "fixed")}; 
 bottom: 0;
 width: 100%;
 height: 80px;

@@ -1,6 +1,0 @@
-#Column example
-
-
-````js`
-
-<Column/>```

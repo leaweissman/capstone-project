@@ -30,6 +30,9 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
             <section>
                 <KanbanIssues
                     showForm
+                    showCheckbox
+                    showDelete
+                    showIssueDelete
                     column={column}
                     issues={issues}
                     setIssues={setIssues}

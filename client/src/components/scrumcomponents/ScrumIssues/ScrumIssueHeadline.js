@@ -1,12 +1,12 @@
 import styled from "styled-components"
 import PropTypes from 'prop-types';
 
-export default function ScrumIssueHeadline({ title, onDeleteIssue }) {
+export default function ScrumIssueHeadline({ title, onDeleteIssue, showIssueDelete }) {
     return (
         <section>
             <IssueInStyle>
                 {title}
-                <DeleteIssueInSyle onClick={onDeleteIssue}> &times;</DeleteIssueInSyle>
+                {showIssueDelete && <DeleteIssueInSyle onClick={onDeleteIssue}> &times;</DeleteIssueInSyle>}
             </IssueInStyle>
 
         </section>

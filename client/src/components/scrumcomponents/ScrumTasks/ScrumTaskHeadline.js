@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-export default function ScrumTaskHeadline({ title, isDone = false, onToggleTask, onDeleteTask }) {
+export default function ScrumTaskHeadline({ title, isDone = false, onToggleTask, onDeleteTask, showCheckbox, showDelete }) {
     return (
         <TaskInStyle>
-            <input type='checkbox' checked={isDone} onChange={onToggleTask} />
+            {showCheckbox && <input type='checkbox' checked={isDone} onChange={onToggleTask} />}
             {title}
-            <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>
+            {showDelete && <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>}
         </TaskInStyle>
     )
 }

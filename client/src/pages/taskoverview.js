@@ -1,6 +1,6 @@
 import KeyResult from '../components/okrcomponents/KeyResults/KeyResult';
 import KanbanIssues from '../components/kanbancomponents/Issues/KanbanIssues';
-import loadFromLocal from '../components/lib/loadFromLocal';
+import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
 import ScrumIssues from '../components/scrumcomponents/ScrumIssues/ScrumIssue';
 import toDoIcon from '../assets/toDoIcon.svg';

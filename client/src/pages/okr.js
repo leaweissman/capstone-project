@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Elementokr from '../assets/1x/Elementokr.png';
-import loadFromLocal from '../components/lib/loadFromLocal';
+import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
 import OkrNavigation from '../components/okrcomponents/Detailspages/OkrNavigation';
 import OkrBigPicture from '../components/okrcomponents/OkrBigPicture';

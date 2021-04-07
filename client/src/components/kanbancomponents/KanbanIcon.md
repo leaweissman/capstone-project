@@ -1,0 +1,5 @@
+#KanbanIcon
+
+```js
+<KanbanIcon />
+```

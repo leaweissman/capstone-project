@@ -4,7 +4,7 @@ import ScrumIssueHeadline from './ScrumIssueHeadline';
 import ScrumIssueForm from '../ScrumIssues/ScrumIssueForm';
 import ScrumTask from '../ScrumTasks/ScrumTask';
 
-export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showScrumForm }) {
+export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showScrumForm, showDelete, showCheckbox, showIssueDelete }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -49,9 +49,12 @@ export default function ScrumIssues({ issues, setIssues, onAddIssueToColumn, col
                 <span key={issue.id}>
                     <ScrumIssueHeadline
                         title={issue.title}
+                        showIssueDelete={showIssueDelete}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <ScrumTask
                         showScrumForm={showScrumForm}
+                        showCheckbox={showCheckbox}
+                        showDelete={showDelete}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}

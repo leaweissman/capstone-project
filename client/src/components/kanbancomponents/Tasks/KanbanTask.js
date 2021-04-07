@@ -4,7 +4,7 @@ import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
 
-export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm }) {
+export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm, showCheckbox, showDelete }) {
 
 
     function toggleCheckbox(idToToggle) {
@@ -38,7 +38,8 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
                     key={id}
                     title={title}
                     isDone={isDone}
-                    showCheckbox
+                    showCheckbox={showCheckbox}
+                    showDelete={showDelete}
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}

@@ -28,6 +28,9 @@ export default function ScrumColumn({ column, onDeleteMyColumn, issues, setIssue
             <section>
                 <ScrumIssue
                     showScrumForm
+                    showDelete
+                    showCheckbox
+                    showIssueDelete
                     column={column}
                     issues={issues}
                     setIssues={setIssues}

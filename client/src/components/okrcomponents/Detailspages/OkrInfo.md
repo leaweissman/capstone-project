@@ -1,0 +1,7 @@
+#InfoOkr
+
+```js
+
+<OkrInfo/>
+
+```

@@ -4,7 +4,7 @@ import Elementscrum from '../assets/1x/Elementscrum.png';
 import styled from 'styled-components';
 import ScrumColumn from '../components/scrumcomponents/ScrumColumns/ScrumColumn';
 import ScrumColumnForm from '../components/scrumcomponents/ScrumColumns/ScrumColumnForm';
-import loadFromLocal from '../components/lib/loadFromLocal';
+import loadFromLocal from '../lib/loadFromLocal';
 import ScrumInfoTag from '../components/scrumcomponents/AboutScrum/ScrumInfoTag';
 import ScrumInformation from '../components/scrumcomponents/AboutScrum/ScrumNavigation';
 import walkingman from '../assets/walkingman.png';

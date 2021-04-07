@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default function Task({ title, isDone = false, onToggleTask, onDeleteTask, showCheckbox }) {
+export default function Task({ title, isDone = false, onToggleTask, onDeleteTask, showCheckbox, showDelete }) {
     return (
         <TaskInStyle>
             {showCheckbox && <input type='checkbox' checked={isDone} onChange={onToggleTask} />}
             {title}
-            <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>
+            {showDelete && <DeleteInStyle onClick={onDeleteTask}> &times;</DeleteInStyle>}
         </TaskInStyle>
     )
 }
