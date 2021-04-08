@@ -33,6 +33,7 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
                     showCheckbox
                     showDelete
                     showIssueDelete
+                    showButton
                     column={column}
                     issues={issues}
                     setIssues={setIssues}

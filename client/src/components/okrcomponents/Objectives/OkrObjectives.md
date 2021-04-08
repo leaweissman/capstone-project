@@ -1,6 +1,9 @@
 #Okr Objectives
 
 ```js
-<OkrObjectives  />
+
+const objective = {title: 'running water'};
+
+<OkrObjectives objective={objective}/>
 
 ```

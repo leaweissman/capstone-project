@@ -3,13 +3,18 @@ import WomanStanding from '../../assets/WomanStanding.png';
 
 export default function OkrWoman() {
     return (
-        <p>
+        <ImagePInStyle>
             <Image src={WomanStanding} />
-        </p>
+        </ImagePInStyle>
     )
 }
 
+
+const ImagePInStyle = styled.p`
+margin: 0;`
+
 const Image = styled.img`
 display: flex;
+margin-bottom: 0;
 `
 

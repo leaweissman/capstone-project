@@ -2,5 +2,7 @@
 
 ```js
 
-<Task title='Title'/>
+const title = 'running water';
+
+<Task title={title}/>
 ```

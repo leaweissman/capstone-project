@@ -12,7 +12,8 @@ export default function ScrumTaskHeadline({ title, isDone = false, onToggleTask,
 }
 const TaskInStyle = styled.section`
 text-align: left;
-margin: .3rem;`
+margin: .3rem;
+margin-bottom: .3rem;`
 
 const DeleteInStyle = styled.span`
 color: white;

@@ -1,0 +1,6 @@
+#ScrumIcon
+
+```js
+<ScrumIcon/>
+
+```

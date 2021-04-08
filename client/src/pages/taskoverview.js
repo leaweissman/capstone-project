@@ -21,7 +21,8 @@ export default function TasksOverview() {
             <KeyResultsInStyle>
                 <p>Here are your open Key Results:</p>
                 {keyResult.map((singleKeyResult) => {
-                    return <KeyResult keyResult={singleKeyResult} />
+                    return <KeyResult
+                        keyResult={singleKeyResult} />
                 })}
             </KeyResultsInStyle>
             <KanbanInStyle>

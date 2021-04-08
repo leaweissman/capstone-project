@@ -2,6 +2,7 @@
 
 ```js
 
-<OkrMissionCard mission={mission} title='Title'/>
+const mission = {title: 'Mission'};
+<OkrMissionCard mission={mission}/>
 
 ```

@@ -1,5 +1,8 @@
 #IssueHeadline
 
 ```js
-<IssueHeadline title="Headline" />
+
+const issue = {title: 'title'};
+
+<IssueHeadline issue={issue} />
 ```

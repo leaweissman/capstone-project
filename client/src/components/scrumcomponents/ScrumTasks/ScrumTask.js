@@ -44,9 +44,9 @@ export default function ScrumTask({ addTask, issue, updateTaskForIssue, issues, 
             )}
             {showScrumForm && <ScrumTaskForm issue={issue} submitTask={addTask} />}
 
-            <ButtonInStyle onClick={deleteAll}>
+            {showDelete && <ButtonInStyle onClick={deleteAll}>
                 delete all tasks
-            </ButtonInStyle>
+            </ButtonInStyle>}
 
         </SectionInStyle>
     )
@@ -60,12 +60,13 @@ ScrumTask.propTypes = {
 const SectionInStyle = styled.section`
 background-color:#B6CE91;
 border-radius: 1rem;
+padding-bottom: 1rem;
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 `
 const HeadingInStyle = styled.p`
-margin: .5;
+margin: 1rem;
 text-align:left;
-padding-left: .5rem;
+padding-left: 1rem;
 padding-top: .5rem;
 `
 const ButtonInStyle = styled.button`

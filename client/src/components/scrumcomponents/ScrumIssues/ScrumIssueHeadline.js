@@ -19,7 +19,7 @@ ScrumIssueHeadline.propTypes = {
 }
 const IssueInStyle = styled.h4`
 text-align:left;
-margin: 1rem;`
+margin: .3rem;`
 
 const DeleteIssueInSyle = styled.span`
 color: white;`

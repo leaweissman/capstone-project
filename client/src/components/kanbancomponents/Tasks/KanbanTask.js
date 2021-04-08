@@ -4,7 +4,7 @@ import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
 
-export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm, showCheckbox, showDelete }) {
+export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm, showCheckbox, showDelete, showButton }) {
 
 
     function toggleCheckbox(idToToggle) {
@@ -44,9 +44,9 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
                     onDeleteTask={() => deleteTask(id)} />
             )}
             {showForm && <KanbanTasksForm issue={issue} submitTask={addTask} />}
-            <ButtonInStyle onClick={deleteAll}>
+            {showButton && <ButtonInStyle onClick={deleteAll}>
                 delete all tasks
-            </ButtonInStyle>
+            </ButtonInStyle>}
 
         </SectionInStyle>
     )

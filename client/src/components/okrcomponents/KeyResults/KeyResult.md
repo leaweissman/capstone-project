@@ -1,6 +1,8 @@
 #KeyResult
 
 ```js
-<KeyResukt/>
+const keyResult= {title: 'Key Result'};
+
+<KeyResult keyResult={keyResult}/>
 
 ```

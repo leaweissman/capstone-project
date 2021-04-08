@@ -2,6 +2,6 @@
 
 ```js
 
-<OkrObjectivesForm/>
+<OkrObjectiveForm/>
 
 ```

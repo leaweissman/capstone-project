@@ -5,7 +5,7 @@ import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox, showDelete, showIssueDelete }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox, showDelete, showIssueDelete, showButton }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -54,6 +54,7 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
+                        showButton={showButton}
                         showForm={showForm}
                         showCheckbox={showCheckbox}
                         showDelete={showDelete}
@@ -74,7 +75,6 @@ KanbanIssues.propTypes = {
     setIssues: PropTypes.func,
     onAddIssueToColumn: PropTypes.func,
     addTask: PropTypes.func,
-    showCheckbox: PropTypes.func,
 }
 
 const SectionInStyle = styled.section`
