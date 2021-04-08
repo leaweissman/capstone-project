@@ -14,10 +14,10 @@ Semmlkneedl luja auf gehds beim Schichtl, Graudwiggal! Hoid mim Radl foahn Sauwe
 }
 
 const InfoCardInStyle = styled.div`
-background-color: white;
+background-color: #D6846B;
 border-radius: 5rem; 
-border: 2px solid var(--primarypink);
 margin: 2rem;
+padding: 2rem;
 `
 const InfoHeaderInStyle = styled.h3`
 text-align:center;
@@ -25,3 +25,4 @@ margin: 1rem;
 `
 const InfoTextInStyle = styled.p`
 margin: 2rem;`
+

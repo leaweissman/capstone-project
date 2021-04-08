@@ -1,11 +1,11 @@
 import { v4 as uuid4 } from 'uuid';
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types';
 import IssueHeadline from './IssueHeadline';
 import KanbanIssueForm from '../Issues/KanbanIssuesForm';
 import KanbanTask from '../Tasks/KanbanTask';
 
-export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask }) {
+export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, column, addTask, showForm, showCheckbox, showDelete, showIssueDelete, showButton }) {
 
     function addIssue(issue) {
         const newIssue = { ...issue, id: uuid4() };
@@ -44,14 +44,20 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
         setIssues(updatedIssues)
     }
 
+
     return (
         <SectionInStyle>
             {issues?.map((issue) =>
                 <span key={issue.id}>
                     <IssueHeadline
+                        showIssueDelete={showIssueDelete}
                         title={issue.title}
                         onDeleteIssue={() => deleteIssue(issue.id)} />
                     <KanbanTask
+                        showButton={showButton}
+                        showForm={showForm}
+                        showCheckbox={showCheckbox}
+                        showDelete={showDelete}
                         issue={issue}
                         issues={issues}
                         setIssues={setIssues}
@@ -60,15 +66,22 @@ export default function KanbanIssues({ issues, setIssues, onAddIssueToColumn, co
                         updateIssues={updateIssues} />
                 </span>
             )}
-            <KanbanIssueForm submitIssueFunction={addIssue} />
+            {showForm && <KanbanIssueForm submitIssueFunction={addIssue} />}
         </SectionInStyle>
     )
 }
 
+KanbanIssues.propTypes = {
+    setIssues: PropTypes.func,
+    onAddIssueToColumn: PropTypes.func,
+    addTask: PropTypes.func,
+}
 
 const SectionInStyle = styled.section`
-border: 2px solid var(--primaryblue);
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 2rem;
 padding: .5rem;
+color: white;
+background-color:#D6846B;
 `
 

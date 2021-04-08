@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Task from './Task';
 import KanbanTasksForm from '../Tasks/KanbanTasksForm';
 
-export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues }) {
+
+export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues, updateIssues, showForm, showCheckbox, showDelete, showButton }) {
 
 
     function toggleCheckbox(idToToggle) {
@@ -36,24 +38,43 @@ export default function KanbanTask({ addTask, issue, updateTaskForIssue, issues,
                     key={id}
                     title={title}
                     isDone={isDone}
+                    showCheckbox={showCheckbox}
+                    showDelete={showDelete}
                     onToggleTask={() => toggleCheckbox(id)}
                     onDeleteTask={() => deleteTask(id)} />
             )}
-            <KanbanTasksForm issue={issue} submitTask={addTask} />
-
-            <button onClick={deleteAll}>
+            {showForm && <KanbanTasksForm issue={issue} submitTask={addTask} />}
+            {showButton && <ButtonInStyle onClick={deleteAll}>
                 delete all tasks
-            </button>
+            </ButtonInStyle>}
 
         </SectionInStyle>
     )
 }
 
+KanbanTask.propTypes = {
+    addTask: PropTypes.func,
+    updateTaskForIssue: PropTypes.func,
+    updateIssues: PropTypes.func,
+
+}
 
 const SectionInStyle = styled.section`
-border: 2px solid white;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+background-color: #FAB8A4;
+border-radius: 2rem;
+margin: 1rem;
+padding: 1rem;
 `
 const HeadingInStyle = styled.p`
-margin: .5;
+margin: 20px;
 text-align:left;
 `
+
+const ButtonInStyle = styled.button`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+padding: .1rem;
+margin: 1rem;`

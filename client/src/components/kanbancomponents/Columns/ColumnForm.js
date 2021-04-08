@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import isValidColumnForm from '../../../lib/ValidateFunction';
 
 export default function ColumnForm({ submitFunction }) {
     const initialColumn = {
@@ -18,22 +21,42 @@ export default function ColumnForm({ submitFunction }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        submitFunction(column)
-        setColumn(initialColumn)
+        if (isValidColumnForm(column)) {
+            submitFunction(column)
+            setColumn(initialColumn)
+        } else { alert('Dein Column muss mehr als 1 Buchstaben haben') }
     }
 
     return (
         <form className='form'>
             <label>
-                Column Name:
-            <input
+
+                <InputInStyle
                     type='text'
                     name='column_name'
                     placeholder='Column Name'
                     onChange={handleChange}
                     value={column.column_name} />
             </label>
-            <button onClick={handleSubmit}>Submit</button>
+            <ButtonInStyle onClick={handleSubmit}>+</ButtonInStyle>
         </form>
     )
 }
+
+ColumnForm.propTypes = {
+    submitFunction: PropTypes.func,
+}
+
+
+const InputInStyle = styled.input`
+border: none;
+margin: 1rem;
+`
+
+const ButtonInStyle = styled.button`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+margin: .5rem;`
+

@@ -1,6 +1,8 @@
 import { v4 as uuid4 } from 'uuid';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import KanbanIssues from '../Issues/KanbanIssues';
+
 
 
 export default function Column({ column, onDeleteMyColumn, issues, setIssues, onAddIssueToColumn }) {
@@ -23,10 +25,15 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
     return (
         <Wrapper>
             <ColumnName>{column.column_name}</ColumnName>
-            <button onClick={() => onDeleteMyColumn(column.id)}
-            >Delete my Column</button>
+            <ButtonInStyle onClick={() => onDeleteMyColumn(column.id)}
+            >Delete my Column</ButtonInStyle>
             <section>
                 <KanbanIssues
+                    showForm
+                    showCheckbox
+                    showDelete
+                    showIssueDelete
+                    showButton
                     column={column}
                     issues={issues}
                     setIssues={setIssues}
@@ -38,16 +45,31 @@ export default function Column({ column, onDeleteMyColumn, issues, setIssues, on
     )
 }
 
+Column.popTypes = {
+    title: PropTypes.string,
+    isDone: PropTypes.bool,
+    onDeleteMyColumn: PropTypes.func,
+    onAddIssueToColumn: PropTypes.func,
+}
 
 const Wrapper = styled.div`
 text-align: center;
-border: solid 2px var(--primarypink);
+color: white;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 border-radius: 1rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color: #BF3604;
 `
 const ColumnName = styled.h3`
-color: var(--primaryblue);
 text-align: left;
+color: white;
+background-color:#BF3604;
 `
+const ButtonInStyle = styled.button`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+padding: .1rem;
+margin: 1rem;`

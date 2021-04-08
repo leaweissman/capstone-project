@@ -1,0 +1,7 @@
+#OkrIcon
+
+```js
+
+<OkrIcon/>
+
+```

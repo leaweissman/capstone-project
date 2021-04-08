@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import loadFromLocal from '../components/kanbancomponents/lib/loadFromLocal';
+import Elementokr from '../assets/1x/Elementokr.png';
+import loadFromLocal from '../lib/loadFromLocal';
 import styled from 'styled-components';
 import OkrNavigation from '../components/okrcomponents/Detailspages/OkrNavigation';
 import OkrBigPicture from '../components/okrcomponents/OkrBigPicture';
@@ -10,6 +11,8 @@ import OkrObjectives from '../components/okrcomponents/Objectives/OkrObjectives'
 import OkrObjectiveForm from '../components/okrcomponents/Objectives/OkrObjectivesForm';
 import KeyResultForm from '../components/okrcomponents/KeyResults/KeyResultsForm';
 import KeyResult from '../components/okrcomponents/KeyResults/KeyResult';
+import OkrWoman from '../components/okrcomponents/OkrWoman';
+import OkrIcon from '../components/okrcomponents/OkrIcon';
 
 export default function Okr() {
     const LOCAL_STORAGE_KEY_MISSION = 'okrmission'
@@ -54,7 +57,9 @@ export default function Okr() {
 
     return (
         <OkrInStyle>
-            <p>Welcome to OKR</p>
+            <IconInStyle>
+                <OkrIcon />
+            </IconInStyle>
             <Infotag>Objectives and Key Results (OKR) ist eine beliebte Technik, um Ziele innerhalb einer Organisation zu setzen. Die Hauptanwendung besteht darin, Unternehmens-, Team- und persönliche Ziele zu verbinden, um messbare Ergebnisse zu erhalten. Die OKR-Methode wird von Unternehmen wie Google, Linkedin, Twitter usw. verwendet, um ihr Team bei der Erreichung ihrer Ziele zu unterstützen.</Infotag>
             <OkrNavigation />
             <OkrBigPicture />
@@ -65,7 +70,7 @@ export default function Okr() {
                     mission={mission}
                 />
             ))}
-            <button onClick={deleteMission}>Delete the Mission</button>
+            <ButtonInStyle onClick={deleteMission}>Delete the Mission</ButtonInStyle>
 
             <OkrObjectiveForm submitFunction={addObjective} />
             {objectives.map((objective) => (
@@ -73,7 +78,7 @@ export default function Okr() {
                     key={objective.id}
                     objective={objective} />
             ))}
-            <button onClick={deleteObjectives}>Delete all Objectives</button>
+            <ButtonInStyle onClick={deleteObjectives}>Delete all Objectives</ButtonInStyle>
 
             <KeyResultForm submitFunction={addKeyResult} />
             {keyResults.map((keyResult) => (
@@ -81,21 +86,40 @@ export default function Okr() {
                     key={keyResult.id}
                     keyResult={keyResult} />
             ))}
-            <button onClick={deleteKeyResults}>Delete all Key Results</button>
+            <ButtonInStyle onClick={deleteKeyResults}>Delete all Key Results</ButtonInStyle>
+            <OkrWoman />
         </OkrInStyle>
     );
 }
 
 
+const IconInStyle = styled.div`
+width: 10%;
+margin-left: 45%;
+padding-top: 1rem;`
+
 const OkrInStyle = styled.div`
-margin-bottom: 7rem;
+background-image: url(${Elementokr});
+background-size: cover;
+background-attachment: fixed;
+width: 100%;
+margin: 0;
+
 `
 
 const Infotag = styled.p`
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 text-align: center;
-border: solid 2px var(--primarypink);
-border-radius: 1rem;
+border-radius: .5rem;
 margin: 1rem; 
 padding: 0.8rem;
-background-color: white;
+background-color: #FFB600;
 `
+const ButtonInStyle = styled.button`
+color: #E85D2F;
+background-color:#FDD577;
+border-radius: .5rem;
+border-color:#E85D2F;
+margin: .5rem;
+padding: .25rem;`
+

@@ -20,19 +20,18 @@ display: flex;
 flex-direction: row;
 text-decoration: none;
 padding: 0.5rem;
-color: var(--primarypink);
+color: white;
+background-color: #B6CE91;
+width: 100%;
+border-radius: 2rem;
 
 &:hover{
-    color: var(--primaryblue);
+    color: #3C591E;
 }
 
-&.active{
-    color: var(--primaryblue);
-    font-weight: bold;
-}
 `
 const Stylednav = styled.nav`
-color: var(--primarypink);
+color: green;
 display:flex;
 flex-wrap:wrap;
 justify-content: center;

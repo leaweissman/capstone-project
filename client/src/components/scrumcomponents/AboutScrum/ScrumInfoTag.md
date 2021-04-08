@@ -1,0 +1,7 @@
+#ScrumInfoTag
+
+```js
+
+<ScrumInfoTag/>
+
+```

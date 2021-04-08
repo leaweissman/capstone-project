@@ -1,0 +1,6 @@
+#ScrumBoardInfo
+
+```js
+<ScrumBoardInfo/>
+
+```

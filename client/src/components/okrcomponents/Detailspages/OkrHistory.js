@@ -15,9 +15,10 @@ Während Andrew Grove die Methode in seinem Buch auf zwei Seiten beschreibt,[11]
 }
 
 const InfoCardInStyle = styled.div`
-background-color: white;
-border-radius: 5rem; 
-border: 2px solid var(--primarypink);
+background-color: #F09939;
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 1rem; 
+padding: .5rem;
 margin: 2rem;
 `
 const InfoHeaderInStyle = styled.h3`

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function KanbanTasksForm({ issue, submitTask }) {
     const initialTask = {
@@ -27,14 +29,30 @@ export default function KanbanTasksForm({ issue, submitTask }) {
     return (
         <form className='form' onSubmit={handleSubmit}>
             <h3>add further tasks</h3>
-            <input
+            <InputInStyle
                 name='title'
                 type='text'
                 placeholder='Anything else to do?'
                 onChange={handleChange}
                 value={task.title}
                 task={task} />
-            <button >Add task</button>
+            <ButtonInStyle>+</ButtonInStyle>
         </form>
     )
 }
+
+KanbanTasksForm.propTypes = {
+    submitTask: PropTypes.func,
+}
+
+const ButtonInStyle = styled.button`
+color: white;
+background-color:#D6846B;
+border-radius: .5rem;
+border-color:#AB3E1D;
+padding: .1rem;
+margin: 1rem;`
+
+const InputInStyle = styled.input`
+border: none;
+`
